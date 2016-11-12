@@ -1,7 +1,7 @@
-#ifndef Eau_hpp
-#define Eau_hpp
+#ifndef SNenuphardVeneneux_hpp
+#define SNenuphardVeneneux_hpp
 
-#include "Element.hpp"
+#include "StrategieNenuphard.hpp"
 /*!
  * \file Element.h
  * \brief Classe abstraite représentant les elements du plateau
@@ -19,12 +19,9 @@
    /*! \class Element
     * \brief classe representant les elements du plateau de jeu
     */
-   class Eau: public Element{
-     /*!
-      *  \brief Constructeur
-      *  Constructeur de la classe Eau
-      */
-     Eau();
+   class SNenuphardVeneneux: public StrategieNenuphard{
+   public:
+     SNenuphardVeneneux();
    };
 };
 #endif

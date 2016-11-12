@@ -1,5 +1,4 @@
-#include "Eau.hpp"
-
+#include "SNenuphardNormal.hpp"
 /*
 virtual void vieillir();
 virtual Couleur getCouleur();
@@ -8,18 +7,22 @@ Couleur type_;
  int pntvie_;*/
 
 /*Constructeur*/
-Eau::Eau(){
-  type_(None);
-}
+SNenuphardNormal::SNenuphardNormal(){
+  type_(Vert);
+  pntvie_(60);
+};
 /*Vieillir mais pas utilisé ici*/
+void
 Eau::vieillir(){
-}
-
+  (this.pntvie_)--;
+};
 Couleur
 Eau::getCouleur(){
   return this.type_;
 };
 
 /*getVie*/
+int
 Eau::getvie(){
+  return this.pntvie_;
 };

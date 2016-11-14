@@ -17,300 +17,300 @@
 #include <map>
 #include <mutex>
 
-namespace grenouille {
+	namespace grenouilloland {
 
-/**
-* Declarations incompletes necessaires.
-*/
-class Presentateur;
+	/**
+	* Declarations incompletes necessaires.
+	*/
+	class Presentateur;
 
-/**
-* @class VueGrenouille VueGrenouille.hpp
-* @brief Vue de l'application.
-* @author Marechal Charlie
-* @author Fontaine Luc
-* @author Souleiman Choukri
-* à
-* Declaration de la classe VueGrenouille representant la vue du jeu grenouilloland, son interface graphique
-*
-*/
-class Vue: public Gtk::Window {
-public:
+	/**
+	* @class VueGrenouille VueGrenouille.hpp
+	* @brief Vue de l'application.
+	* @author Marechal Charlie
+	* @author Fontaine Luc
+	* @author Souleiman Choukri
+	* à
+	* Declaration de la classe VueGrenouille representant la vue du jeu grenouilloland, son interface graphique
+	*
+	*/
+	class Vue: public Gtk::Window {
+	public:
 
-/**
-* Declaration d'amitié.
-*/
-friend class CaseGraphique;
+	/**
+	* Declaration d'amitié.
+	*/
+	friend class CaseGraphique;
 
-friend class Dimension;
+	friend class Dimension;
 
-friend class PointDeVie;
+	friend class PointDeVie;
 
-public:
+	public:
 
-/**
-* Initialise cette classe.
-*/
-static void initialiser();
+	/**
+	* Initialise cette classe.
+	*/
+	static void initialiser();
 
-public:
+	public:
 
-/**
-* Accesseur.
-* @return la valeur de @ref titreVue.
-*/
-static const Glib::ustring lireTitreVue();
+	/**
+	* Accesseur.
+	* @return la valeur de @ref titreVue.
+	*/
+	static const Glib::ustring lireTitreVue();
 
-/**
-* Accesseur.
-* @return la valeur de @ref titreGrenouille.
-*/
-static const Glib::ustring lireTitreGrenouille();
+	/**
+	* Accesseur.
+	* @return la valeur de @ref titreGrenouille.
+	*/
+	static const Glib::ustring lireTitreGrenouille();
 
-/**
-* Accesseur.
-* @return la valeur de @ref titrePointDeVie.
-*/
-static const Glib::ustring lireTitrePointDeVie();
+	/**
+	* Accesseur.
+	* @return la valeur de @ref titrePointDeVie.
+	*/
+	static const Glib::ustring lireTitrePointDeVie();
 
-/**
-* Accesseur.
-* @return la valeur de @ref titreChronometre.
-*/
-static const Glib::ustring lireTitreChronometre();
+	/**
+	* Accesseur.
+	* @return la valeur de @ref titreChronometre.
+	*/
+	static const Glib::ustring lireTitreChronometre();
 
-/**
-* Accesseur.
-* @return la valeur de @ref titreDimension.
-*/
-static const Glib::ustring lireTitreDimension();
+	/**
+	* Accesseur.
+	* @return la valeur de @ref titreDimension.
+	*/
+	static const Glib::ustring lireTitreDimension();
 
-protected:
+	protected:
 
-/**
-* Retourne l'image dont le nom est fourni en argument.
-* @param[in] nom - le nom de l'image.
-* @return l'image correspondante.
-*/
-static const Glib::RefPtr< Gdk::Pixbuf>& lireImage(const Glib::ustring& nom);
+	/**
+	* Retourne l'image dont le nom est fourni en argument.
+	* @param[in] nom - le nom de l'image.
+	* @return l'image correspondante.
+	*/
+	static const Glib::RefPtr< Gdk::Pixbuf>& lireImage(const Glib::ustring& nom);
 
-public:
+	public:
 
-/**
-* Constructeur logique.
-* @param[in] presentateur - la valeur de @ref _ptrPresentateur.
-*/
-Vue(Presentateur& presentateur);
+	/**
+	* Constructeur logique.
+	* @param[in] presentateur - la valeur de @ref _ptrPresentateur.
+	*/
+	Vue(Presentateur& presentateur);
 
-protected:
+	protected:
 
-/**
-* Met à jour l'affichage des PointDeVie, l'ensemble des CelluleGraphique
-* de GrenouilleGraphique ainsi que le Chronometre.
-*/
-void mettreAJour();
+	/**
+	* Met à jour l'affichage des PointDeVie, l'ensemble des CelluleGraphique
+	* de GrenouilleGraphique ainsi que le Chronometre.
+	*/
+	void mettreAJour();
 
-public:
+	public:
 
-/**
-* Accesseur.
-* @return la valeur de @ref ptrPresentateur.
-*/
-const Presentateur& lirePresentateur() const;
+	/**
+	* Accesseur.
+	* @return la valeur de @ref ptrPresentateur.
+	*/
+	const Presentateur& lirePresentateur() const;
 
-protected:
+	protected:
 
-/**
-* Accesseur.
-* @return la valeur de @ref ptrPresentateur.
-*/
-Presentateur& lirePresentateurModifiable();
+	/**
+	* Accesseur.
+	* @return la valeur de @ref ptrPresentateur.
+	*/
+	Presentateur& lirePresentateurModifiable();
 
-protected:
+	protected:
 
-/**
-* Verrouille cette vue.
-*/
-void verrouiller();
+	/**
+	* Verrouille cette vue.
+	*/
+	void verrouiller();
 
-/**
-* Deverrouille cette vue.
-*/
-void deverrouiller();
+	/**
+	* Deverrouille cette vue.
+	*/
+	void deverrouiller();
 
-protected:
+	protected:
 
-/**
-* Construit les barre de menus et d'outils.
-* @param[in,out] gestionnaire - le gestionnaire de mise en forme associe a
-* la fenetre principale.
-*/
-void construireBarreMenusEtOutils(Gtk::VBox& gestionnaire);
+	/**
+	* Construit les barre de menus et d'outils.
+	* @param[in,out] gestionnaire - le gestionnaire de mise en forme associe a
+	* la fenetre principale.
+	*/
+	void construireBarreMenusEtOutils(Gtk::VBox& gestionnaire);
 
-/**
-* Construit la partie centrale de la fenetre principale contenant le 
-* GrenouilleGraphique et les PointDeVie.
-* @param[in,out] gestionnaire - le gestionnaire de mise en forme associe a
-*   la fenetre principale.
-*/
-void construirePartieCentrale(Gtk::VBox& gestionnaire);
+	/**
+	* Construit la partie centrale de la fenetre principale contenant le
+	* GrenouilleGraphique et les PointDeVie.
+	* @param[in,out] gestionnaire - le gestionnaire de mise en forme associe a
+	*   la fenetre principale.
+	*/
+	void construirePartieCentrale(Gtk::VBox& gestionnaire);
 
-/**
-* Construit la partie inferieure de la fenetre principale contenant le
-* controleur de la dimension du jeu. 
-* @param[in,out] gestionnaire - le gestionnaire de mise en forme associe a
-* la fenetre principale.
-*/
-void construirePartieInferieure(Gtk::VBox& gestionnaire);
+	/**
+	* Construit la partie inferieure de la fenetre principale contenant le
+	* controleur de la dimension du jeu.
+	* @param[in,out] gestionnaire - le gestionnaire de mise en forme associe a
+	* la fenetre principale.
+	*/
+	void construirePartieInferieure(Gtk::VBox& gestionnaire);
 
-protected:
+	protected:
 
-/**
-* Callback permettant de preparer le jeu pour une nouvelle partie. Cette methode
-* est appellée lors d'une pression sur le bouton nouveau de la barre de commande.
-* @note Lors de cette methode la vue est verrouillee.
-*/
-void cbNouveau();
+	/**
+	* Callback permettant de preparer le jeu pour une nouvelle partie. Cette methode
+	* est appellée lors d'une pression sur le bouton nouveau de la barre de commande.
+	* @note Lors de cette methode la vue est verrouillee.
+	*/
+	void cbNouveau();
 
-/**
-* Callback permettant de preparer une nouvelle partie avec une autre dimension.
-* @note Lors de cette methode la vue est verrouillee.
-*/
-void cbChangerModele();
+	/**
+	* Callback permettant de preparer une nouvelle partie avec une autre dimension.
+	* @note Lors de cette methode la vue est verrouillee.
+	*/
+	void cbChangerModele();
 
-/**
-* Callback permettant de presenter l'application et ses auteurs. Cette
-* methode est appellee suite a une pression sur l entre "A propos ..." du menu
-* "Commandes" ou bien sur le bouton correspondant dans la barre d'outils.
-*/
-void cbAPropos();
+	/**
+	* Callback permettant de presenter l'application et ses auteurs. Cette
+	* methode est appellee suite a une pression sur l entre "A propos ..." du menu
+	* "Commandes" ou bien sur le bouton correspondant dans la barre d'outils.
+	*/
+	void cbAPropos();
 
-/**
-* Callback permettant de quitter l'application. Cette methode
-* est appellee suite a une pression sur le l entree "Quitter" du menu "Commandes"
-* ou bien sur le bouton correspondant dans la barre d'outils.
-*
-* @note Lors de cette methode la vue est verrouillee.
-*/
-void cbQuitter();
+	/**
+	* Callback permettant de quitter l'application. Cette methode
+	* est appellee suite a une pression sur le l entree "Quitter" du menu "Commandes"
+	* ou bien sur le bouton correspondant dans la barre d'outils.
+	*
+	* @note Lors de cette methode la vue est verrouillee.
+	*/
+	void cbQuitter();
 
-private:
+	private:
 
-/**
-* Constructeur par recopie.
-* @param[in] recopie - l'instance a recopier.
-*/
-VueGrenouille(const VueGrenouille& recopie) = delete;
+	/**
+	* Constructeur par recopie.
+	* @param[in] recopie - l'instance a recopier.
+	*/
+	VueGrenouille(const VueGrenouille& recopie) = delete;
 
-/**
-* Operateur d'affectation.
-*
-* @param[in] recopie - l'instance a recopier.
-* @return cette instance apres recopie.
-*/
-VueGrenouille& operator=(const VueGrenouille& recopie) = delete;
+	/**
+	* Operateur d'affectation.
+	*
+	* @param[in] recopie - l'instance a recopier.
+	* @return cette instance apres recopie.
+	*/
+	VueGrenouille& operator=(const VueGrenouille& recopie) = delete;
 
-protected:
+	protected:
 
-/**
-* Titre de cette vue.
-*/
-static const Glib::ustring titreVue;
+	/**
+	* Titre de cette vue.
+	*/
+	static const Glib::ustring titreVue;
 
-/**
-* Titre de la representation graphique du jeu grenouille.
-*/
-static const Glib::ustring titreGrenouille;
+	/**
+	* Titre de la representation graphique du jeu grenouille.
+	*/
+	static const Glib::ustring titreGrenouille;
 
-/**
-* Titre du panneau de points de vie.
-*/
-static const Glib::ustring titrePointDeVie;
+	/**
+	* Titre du panneau de points de vie.
+	*/
+	static const Glib::ustring titrePointDeVie;
 
-/**
-* Titre du controleur du chronomètre du jeu.
-*/
-static const Glib::ustring titreChronometre;
+	/**
+	* Titre du controleur du chronomètre du jeu.
+	*/
+	static const Glib::ustring titreChronometre;
 
-/**
-* Titre du controleur de la dimension du jeu.
-*/
-static const Glib::ustring titreDimension;
+	/**
+	* Titre du controleur de la dimension du jeu.
+	*/
+	static const Glib::ustring titreDimension;
 
 
-/**
-* Chemin d'acces au répertoire contenant les images.
-*/
-static const Glib::ustring cheminImages;
+	/**
+	* Chemin d'acces au répertoire contenant les images.
+	*/
+	static const Glib::ustring cheminImages;
 
-/**
-* Stockage des images dans un map.
-*/
-static std::map< Glib::ustring, Glib::RefPtr< Gdk::Pixbuf> > images;
+	/**
+	* Stockage des images dans un map.
+	*/
+	static std::map< Glib::ustring, Glib::RefPtr< Gdk::Pixbuf> > images;
 
-protected:
+	protected:
 
-/**
-* Presentateur unique associe a cette vue.
-*/
-Presentateur* const ptrPresentateur;
+	/**
+	* Presentateur unique associe a cette vue.
+	*/
+	Presentateur* const ptrPresentateur;
 
-/**
-* Representation graphique du modele.
-*/
-std::unique_ptr< GrenouilleGraphique > _ptrGrenouilleGraphique;
+	/**
+	* Representation graphique du modele.
+	*/
+	std::unique_ptr< GrenouilleGraphique > _ptrGrenouilleGraphique;
 
-/**
-* Affichage des points de vie de la grenouille.
-*/
-PointDeVie pointDeVie;
+	/**
+	* Affichage des points de vie de la grenouille.
+	*/
+	PointDeVie pointDeVie;
 
-/**
-* Controleur de la dimension du jeu.
-*/
-Dimension dimension;
+	/**
+	* Controleur de la dimension du jeu.
+	*/
+	Dimension dimension;
 
-/**
-* Affichage du chronomètre du jeu.
-*/
-Chronometre chronometre;
+	/**
+	* Affichage du chronomètre du jeu.
+	*/
+	Chronometre chronometre;
 
-/**
-* Gestionnaire de la partie centrale de la fenetre principale
-* contenant GrenouilleGraphique et PointDeVie.
-*/
-Gtk::HBox gestionnaireCentre;
+	/**
+	* Gestionnaire de la partie centrale de la fenetre principale
+	* contenant GrenouilleGraphique et PointDeVie.
+	*/
+	Gtk::HBox gestionnaireCentre;
 
-/**
-* Gestionnaire de la partie inférieure de la fenetre principale
-* contenant Dimension et Chronometre.
-*/
-Gtk::HBox gestionnaireBas;
+	/**
+	* Gestionnaire de la partie inférieure de la fenetre principale
+	* contenant Dimension et Chronometre.
+	*/
+	Gtk::HBox gestionnaireBas;
 
-/**
-* Verrou associe à cette vue.
-*/
-std::mutex verrou;
+	/**
+	* Verrou associe à cette vue.
+	*/
+	std::mutex verrou;
 
-/**
-* Sous-classe Delegation amie avec le Presentateur, elle permet de mettre à jour la vue sans pour autant
-* donner accès à des methodes non voulu
-*/
-public :
-class Delegation
-{
+	/**
+	* Sous-classe Delegation amie avec le Presentateur, elle permet de mettre à jour la vue sans pour autant
+	* donner accès à des methodes non voulu
+	*/
 	public :
-		friend class Presentateur;			
+	class Delegation
+	{
+		public :
+			friend class Presentateur;
 
-	private :
+		private :
 
-		static void mettreAJour(Vue& vue)
-		{
-			vue.mettreAJour();
-		}
-};
+			static void mettreAJour(Vue& vue)
+			{
+				vue.mettreAJour();
+			}
+	};
 
-};
+	};
 }
 
 #endif

@@ -12,10 +12,10 @@ using namespace grenouilloland;
 
 GrenouilleGraphique::GrenouilleGraphique(const Glib::ustring& titre, VueGrenouille& vue):
   	Gtk::AspectFrame(titre),
-  	ptrVue(&vue) {
+  	_ptrVue(&vue) {
 
   	// Ajout du gestionnaire dans le contours.
-  	add(gestionnaire);
+  	add(_gestionnaire);
 
   	// Recuperation du presentateur associe a la vue proprietaire.
   	const Presentateur& presentateur = vue.lirePresentateur();
@@ -29,8 +29,8 @@ GrenouilleGraphique::GrenouilleGraphique(const Glib::ustring& titre, VueGrenouil
   	// Boucle de creation des cellules graphiques.
   	for (int i = 0; i < dim*dim; i ++) {
       	CelluleGraphique* c = Gtk::manage(new CelluleGraphique(*this, i%dim, i/dim));
-      	gestionnaire.attach(*c, i%dim, i/dim, 1, 1);
-      	cellules.push_back(c);
+      	_gestionnaire.attach(*c, i%dim, i/dim, 1, 1);
+      	_cellules.push_back(c);
     }
 }
 
@@ -40,7 +40,7 @@ GrenouilleGraphique::GrenouilleGraphique(const Glib::ustring& titre, VueGrenouil
 
 const VueGrenouille& 
 GrenouilleGraphique::lireVue() const {
-  return *ptrVue;
+  return *_ptrVue;
 }
 
 /**********************
@@ -49,7 +49,7 @@ GrenouilleGraphique::lireVue() const {
 
 VueGrenouille&
 GrenouilleGraphique::lireVueModifiable() {
-  return *ptrVue;
+  return *_ptrVue;
 }
 
 /****************
@@ -58,7 +58,7 @@ GrenouilleGraphique::lireVueModifiable() {
 
 void
 GrenouilleGraphique::mettreAJour(const Presentateur& presentateur) {
-  for (CelluleGraphique* ptrCellule : cellules) {
+  for (CelluleGraphique* ptrCellule : _cellules) {
     ptrCellule->mettreAJour(presentateur);
   }
 }

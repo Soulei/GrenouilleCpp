@@ -13,8 +13,8 @@ using namespace grenouille;
 
 Dimension::Dimension(const Glib::ustring& titre, VueGrenouille& vue):
 Gtk::Frame(titre),
-ptrVue(&vue),
-listeDim(false)
+_ptrVue(&vue),
+_listeDim(false)
 {
 
 	// Obtention du presentateur.
@@ -30,28 +30,27 @@ listeDim(false)
 	// Création des champs du menu déroulant.
 	for(int i = min; i <= max; i++) {
 		conversion << i;
-		listeDim.append(conversion.str());
+		_listeDim.append(conversion.str());
 		conversion.str("");
 	}
 
 	conversion << init;
 
 	// Dimension initiale
-	listeDim.set_active_text(conversion.str());
-
-	add(listeDim);
+	_listeDim.set_active_text(conversion.str());
+	add(_listeDim);
 
 	// Connection sur la méthode cbChangementDeValeur.
-	listeDim.signal_changed().connect(sigc::mem_fun(*this, &Dimension::cbChangementDeValeur));
+	_listeDim.signal_changed().connect(sigc::mem_fun(*this, &Dimension::cbChangementDeValeur));
 }
 
 /************
 * lireVue. *
 ************/
 
-const VueGrenouille& 
+const VueGrenouille&
 Dimension::lireVue() const {
-	return *ptrVue;
+	return *_ptrVue;
 }
 
 /***********
@@ -61,7 +60,7 @@ Dimension::lireVue() const {
 int
 Dimension::valeur() const {
 
-	Glib::ustring text = listeDim.get_active_text();
+	Glib::ustring text = _listeDim.get_active_text();
 	int value;
 	std::stringstream(text) >> value;
 	return value;
@@ -79,6 +78,6 @@ Dimension::cbChangementDeValeur() {
 	hide();
 
 	// Changement de modele.
-	ptrVue->cbChangerModele();
+	_ptrVue->cbChangerModele();
 
 }

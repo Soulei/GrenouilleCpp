@@ -14,9 +14,9 @@ using namespace grenouille;
 CelluleGraphique::CelluleGraphique(GrenouilleGraphique& grenouilleGraphique,
 			   const int& colonne,
 			   const int& ligne):
-ptrGrenouilleGraphique(&grenouilleGraphique),
-ligne(ligne),
-colonne(colonne) {
+_ptrGrenouilleGraphique(&grenouilleGraphique),
+_ligne(ligne),
+_colonne(colonne) {
 
 // Obtention de la vue.
 const VueGrenouille& vue = _ptrGrenouilleGraphique->lireVue();
@@ -185,7 +185,7 @@ mettreAJour(presentateur);
 
 const GrenouilleGraphique& 
 CelluleGraphique::lireGrenouilleGraphique() const {
-return *ptrGrenouilleGraphique;
+return *_ptrGrenouilleGraphique;
 }
 
 /****************
@@ -194,7 +194,7 @@ return *ptrGrenouilleGraphique;
 
 const int& 
 CelluleGraphique::lireColonne() const {
-return colonne;
+return _colonne;
 }
 
 /**************
@@ -203,7 +203,7 @@ return colonne;
 
 const int& 
 CelluleGraphique::lireLigne() const {
-return ligne;
+return _ligne;
 }
 
 /****************

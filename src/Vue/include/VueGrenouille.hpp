@@ -253,7 +253,7 @@
 	/**
 	* Presentateur unique associe a cette vue.
 	*/
-	Presentateur* const ptrPresentateur;
+	Presentateur* const _ptrPresentateur;
 
 	/**
 	* Representation graphique du modele.
@@ -263,34 +263,34 @@
 	/**
 	* Affichage des points de vie de la grenouille.
 	*/
-	PointDeVie pointDeVie;
+	PointDeVie _pointDeVie;
 
 	/**
 	* Controleur de la dimension du jeu.
 	*/
-	Dimension dimension;
+	Dimension _dimension;
 
 	/**
 	* Affichage du chronomètre du jeu.
 	*/
-	Chronometre chronometre;
+	Chronometre _chronometre;
 
 	/**
 	* Gestionnaire de la partie centrale de la fenetre principale
 	* contenant GrenouilleGraphique et PointDeVie.
 	*/
-	Gtk::HBox gestionnaireCentre;
+	Gtk::HBox _gestionnaireCentre;
 
 	/**
 	* Gestionnaire de la partie inférieure de la fenetre principale
 	* contenant Dimension et Chronometre.
 	*/
-	Gtk::HBox gestionnaireBas;
+	Gtk::HBox _gestionnaireBas;
 
 	/**
 	* Verrou associe à cette vue.
 	*/
-	std::mutex verrou;
+	std::mutex _verrou;
 
 	/**
 	* Sous-classe Delegation amie avec le Presentateur, elle permet de mettre à jour la vue sans pour autant

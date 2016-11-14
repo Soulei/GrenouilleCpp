@@ -54,12 +54,12 @@
 		/**
 		* Image.
 		*/
-		Gtk::Image imageCoeur;
+		Gtk::Image _imageCoeur;
 
 		/**
 		* Label.
 		*/
-		Gtk::Label labelPv;
+		Gtk::Label _labelPv;
 
 	};
 }

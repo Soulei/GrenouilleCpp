@@ -130,11 +130,11 @@ return images[nom];
 *****************/
 
 VueGrenouille::VueGrenouille(Presentateur& presentateur):
-ptrPresentateur(&presentateur),
-ptrGrenouilleGraphique(new GrenouilleGraphique(titreGrenouille, *this)),
+_ptrPresentateur(&presentateur),
+_ptrGrenouilleGraphique(new GrenouilleGraphique(titreGrenouille, *this)),
 pointsDeVie(titrePointsDeVie),
-dimension(titreDimension, *this),
-chronometre(titreChronometre) {
+_dimension(titreDimension, *this),
+_chrnometre(titreChronometre) {
 
 // Titre de la vue.
 set_title(titreVue);
@@ -168,7 +168,7 @@ show_all_children();
 
 const Presentateur&
 VueGrenouille::lirePresentateur() const {
-return *ptrPresentateur;
+return *_ptrPresentateur;
 }
 
 /*******************************
@@ -177,7 +177,7 @@ return *ptrPresentateur;
 
 Presentateur&
 VueGrenouille::lirePresentateurModifiable() {
-return *ptrPresentateur;
+return *_ptrPresentateur;
 }
 
 /****************
@@ -188,13 +188,13 @@ void
 VueGrenouille::mettreAJour() {
 
 // Mise à jour de l'affichage des points de vie de la grenouille.
-pointDeVie.mettreAJour(*ptrPresentateur);
+_pointDeVie.mettreAJour(*_ptrPresentateur);
 
 // Mise à jour des cases du Grenouille graphique.
-ptrGrenouilleGraphique->mettreAJour(*ptrPresentateur);
+_ptrGrenouilleGraphique->mettreAJour(*_ptrPresentateur);
 
 // Mise à jour de l'affichage du chronomètre de jeu.
-chronometre.mettreAJour(*ptrPresentateur);
+_chrnometre.mettreAJour(*_ptrPresentateur);
 }
 
 /****************
@@ -203,7 +203,7 @@ chronometre.mettreAJour(*ptrPresentateur);
 
 void
 VueGrenouille::verrouiller() {
-verrou.lock();
+_verrou.lock();
 }
 
 /*****************
@@ -212,7 +212,7 @@ verrou.lock();
 
 void
 VueGrenouille::deverrouiller() {
-verrou.unlock();
+_verrou.unlock();
 }
 
 /*********************************
@@ -317,9 +317,9 @@ gestionnaire.pack_start(*ptrBarreOutils, Gtk::PACK_SHRINK);
 void
 VueGrenouille::construirePartieCentrale(Gtk::VBox& gestionnaire) {
 
-gestionnaireCentre.pack_start(pointDeVie, Gtk::PACK_SHRINK);
-gestionnaireCentre.pack_start(*ptrGrenouilleGraphique);
-gestionnaire.add(gestionnaireCentre);
+_gestionnaireCentre.pack_start(_pointDeVie, Gtk::PACK_SHRINK);
+_gestionnaireCentre.pack_start(*_ptrGrenouilleGraphique);
+gestionnaire.add(_gestionnaireCentre);
 
 }
 
@@ -331,9 +331,9 @@ gestionnaire.add(gestionnaireCentre);
 void
 VueGrenouille::construirePartieInferieure(Gtk::VBox& gestionnaire) {
 
-gestionnaireBas.pack_start(dimension, Gtk::PACK_SHRINK);
-gestionnaireBas.pack_start(chronometre);
-gestionnaire.add(gestionnaireBas);
+_gestionnaireBas.pack_start(_dimension, Gtk::PACK_SHRINK);
+_gestionnaireBas.pack_start(_chrnometre);
+gestionnaire.add(_gestionnaireBas);
 
 }
 
@@ -347,7 +347,7 @@ VueGrenouille::cbNouveau() {
 // Verrouillage.
 verrouiller();
 
-Presentateur::DelegationVue::lancerPartie(*ptrPresentateur);
+Presentateur::DelegationVue::lancerPartie(*_ptrPresentateur);
 
 // Deverrouillage.
 deverrouiller();
@@ -366,15 +366,14 @@ verrouiller();
 
 // Creation, via le presentateur associe a cette vue, d'un nouveau modele avec
 // la dimension souhaitee.
-const int dimension = dimension.valeur();
-Presentateur::DelegationVue::nouveauModele(*ptrPresentateur, dimension);
+const int dimension = _dimension.valeur();
+Presentateur::DelegationVue::nouveauModele(*_ptrPresentateur, dimension);
 
 // Suppression de l'ancienne representation graphique du jeu et remplacement
 // par une nouvelle adaptee a la nouvelle dimension.
-gestionnaireCentre.remove(*ptrGrenouilleGraphique);
-ptrGrenouilleGraphique.reset(new GrenouilleGraphique(titreGrenouille,
-						*this));
-gestionnaireCentre.pack_start(*ptrGrenouilleGraphique);
+_gestionnaireCentre.remove(*_ptrGrenouilleGraphique);
+_ptrGrenouilleGraphique.reset(new GrenouilleGraphique(titreGrenouille, *this));
+_gestionnaireCentre.pack_start(*_ptrGrenouilleGraphique);
 
 // Re-affichage de tous les composants de la fenetre. Le fait que cette
 // derniere soit non redimensionnable entraine le recalcul des dimensions

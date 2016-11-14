@@ -20,7 +20,7 @@ namespace grenouilloland {
 	* @author Marechal Charlie
 	* @author Fontaine Luc
 	* @author Souleiman Choukri
-	*
+	* @author Yan Xiaoge
 	* Declaration de la classe CelluleGraphique representant graphiquement une
 	* Cellule du modele.
 	*/
@@ -112,17 +112,17 @@ namespace grenouilloland {
 	* Unique representation graphique du jeu proprietaire de cette
 	* Cellule graphique.
 	*/
-	GrenouilleGraphique* const ptrGrenouilleGraphique;
+	GrenouilleGraphique* const _ptrGrenouilleGraphique;
 
 	/**
 	* Numero de ligne de cette Cellule dans le modele.
 	*/
-	const int ligne;
+	const int _ligne;
 
 	/**
 	* Numero de colonne de cette Cellule dans le modele.
 	*/
-	const int colonne;
+	const int _colonne;
 
 	/**
 	* Pixmaps representant les etats possibles d'une Cellule graphique.
@@ -132,7 +132,7 @@ namespace grenouilloland {
 	*   qu'un widget puisse appartenir a plusieurs container. Par consequent,
 	*   nous devons repliquer les images, d'ou un gaspillage de memoire.
 	*/
-	std::map< int, std::unique_ptr< Gtk::Image > > etats;
+	std::map< int, std::unique_ptr< Gtk::Image > > _etats;
 
 	};
 }

@@ -79,12 +79,12 @@ VueGrenouille* const ptrVue;
 /**
 * Gestionnaire de mise en forme de ce plateau.
 */
-Gtk::Grid gestionnaire;
+Gtk::Grid _gestionnaire;
 
 /**
 * Cellules graphiques de cette representation graphique du jeu Grenouille.
 */
-std::vector< CelluleGraphique* > cellules;
+std::vector< CelluleGraphique* > _cellules;
 
 };
 }

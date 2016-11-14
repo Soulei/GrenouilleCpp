@@ -84,7 +84,7 @@ namespace grenouilloland {
   /**
   * Menu déroulant.
   */
-  Gtk::ComboBoxText listeDim;
+  Gtk::ComboBoxText _listeDim;
 
   };
 }

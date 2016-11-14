@@ -15,7 +15,7 @@ VueGrenouille::initialiser() {
 
 // Creations des pixbufs.
 images["Grenouille"] = 
-Gdk::Pixbuf::create_from_file(cheminImages + "grenouille.gif");
+Gdk::Pixbuf::create_from_file(cheminImages + "grenouille-verte-96x96.png");
 
 images["eau"] = 
 Gdk::Pixbuf::create_from_file(cheminImages + "eau-96x96.png");

@@ -1,84 +1,39 @@
 /****************************
-* Definition de la classe. *
+* Definition de la classe Chronometre. *
 ****************************/
 
 #include "Presentateur.hpp"
-#include "Dimension.hpp"
+#include "Chronometre.hpp"
 
 using namespace grenouille;
 
-/**************
-* Dimension. *
-**************/
+/****************
+* Chronometre. *
+***************/
 
-Dimension::Dimension(const Glib::ustring& titre, VueGrenouille& vue):
-Gtk::Frame(titre),
-ptrVue(&vue),
-listeDim(false)
-{
+Chronometre::Chronometre(const Glib::ustring& titre):
+	Gtk::Frame(titre) {
+	add(_barreDeProgression);
+}
 
-	// Obtention du presentateur.
-	const Presentateur& presentateur = vue.lirePresentateur();
+/****************
+* mettreAJour. *
+***************/
 
-	// Obtention des valeurs min, max et init de la dimension du jeu.
-	const int min = presentateur.lireDimensionMinimum();
-	const int max = presentateur.lireDimensionMaximum();
-	const int init = presentateur.dimension();
+void
+Chronometre::mettreAJour(const Presentateur& presentateur) {
 
+	// Récupération du temps de Jeu actuel.
+	int temps = 60 - presentateur.lireModele().lireCompteur();
+
+	// Fraction pour la barre de progression
+	double fraction = temps / 60.0;
+	_barreDeProgression.set_fraction(fraction);
+
+	// Conversion en string pour afficher le temps.
 	std::ostringstream conversion;
+	conversion << temps;
 
-	// Création des champs du menu déroulant.  	
-	for(int i = min; i <= max; i++) {
-		conversion << i;
-		listeDim.append(conversion.str());
-		conversion.str("");
-	}
-
-	conversion << init;
-
-	// Dimension initiale 
-	listeDim.set_active_text(conversion.str());
-
-	add(listeDim);
-
-	// Connection sur la méthode cbChangementDeValeur.
-	listeDim.signal_changed().connect(sigc::mem_fun(*this, &Dimension::cbChangementDeValeur));
-}
-
-/************
-* lireVue. *
-************/
-
-const Vue& 
-Dimension::lireVue() const {
-	return *ptrVue;
-}
-
-/***********
-* valeur. *
-***********/
-
-int 
-Dimension::valeur() const {
-
-	Glib::ustring text = listeDim.get_active_text();
-	int value;
-	std::stringstream(text) >> value;
-	return value;
-}
-
-/*************************
-* cbChangementDeValeur. *
-*************************/
-
-void 
-Dimension::cbChangementDeValeur() {
-
-	// Effacement de ce controle pour pouvoir etre reaffichee par sa vue
-	// proprietaire tout a l'heure.
-	hide();
-
-	// Changement de modele.
-	ptrVue->cbChangerModele();
-
-}
+	// Affichage du temps dans la barre de progression.
+	_barreDeProgression.set_text(conversion.str() + " Sec.");
+	_barreDeProgression.set_show_text(true);

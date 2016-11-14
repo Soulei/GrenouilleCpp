@@ -79,12 +79,12 @@ namespace grenouilloland {
   /**
   * Unique vue proprietaire de ce controleur.
   */
-  Vue* const ptrVue;
+  Vue* const _ptrVue;
 
   /**
   * Menu déroulant.
   */
-  Gtk::ComboBoxText listeDim;
+  Gtk::ComboBoxText _listeDim;
 
   };
 }

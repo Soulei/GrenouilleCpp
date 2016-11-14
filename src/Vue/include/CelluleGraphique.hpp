@@ -6,114 +6,135 @@
 #include <map>
 #include <memory>
 
-// Déclarations incomplètes des classes Presentateur et JeuDeLaVieGraphique.
-class Presentateur;
-class JeuDeLaVieGraphique;
+namespace grenouille {
 
 /**
- * @class CelluleGraphique CelluleGraphique.hpp 
- *
- * Déclaration de la classe CelluleGraphique représentant graphiquement une
- * cellule du modèle.
- *
- * @note Une instance de cette classe ne peut être dupliquée implicitement. 
- * @note Chaque instance de cette classe est son propre listener.
- */
+* Declarations incompletes necessaires.
+*/
+class Presentateur;
+class GrenouilleGraphique;
+
+/**
+* @class CelluleGraphique CelluleGraphique.hh 
+* @brief Representation graphique d'une Cellule.
+* @author Marechal Charlie
+* @author Fontaine Luc
+* @author Souleiman Choukri
+*
+* Declaration de la classe CelluleGraphique representant graphiquement une
+* Cellule du modele.
+*/
 class CelluleGraphique: public Gtk::EventBox {
 public:
 
-  // Déclaration d'amitié envers la classe JeuDeLaVieGraphique.
-  friend class JeuDeLaVieGraphique;
+/**
+* Declaration d'amitié.
+*/
+friend class GrenouilleGraphique;
 
 public:
 
-  /**
-   * Constructeur logique.
-   *
-   * @param[in,out] jeuDeLaVie - la valeur de @ref jeuDeLaVieGraphique_.
-   * @param[in] ligne - la valeur de @ref ligne_.
-   * @param[in] colonne - la valeur de @ref colonne_.
-   */
-  CelluleGraphique(JeuDeLaVieGraphique& jeuDeLaVieGraphique,
-		   const int& ligne,
-		   const int& colonne);
-
-  /**
-   * Constructeur par recopie.
-   *
-   * @param[in] autre - l'instance a recopier.
-   */
-  CelluleGraphique(const CelluleGraphique& autre) = delete;
+/**
+* Constructeur logique.
+*
+* @param[in,out] jeu - la valeur de @ref ptrGrenouilleGraphique.
+* @param[in] ligne - la valeur de @ref ligne.
+* @param[in] colonne - la valeur de @ref colonne.
+*/
+CelluleGraphique(GrenouilleGraphique& grenouilleGraphique,
+	   const int& colonne,
+	   const int& ligne);
 
 public:
 
-  /**
-   * Accesseur.
-   *
-   * @return la valeur de @ref jeuDeLaVieGraphique_.
-   */
-  const JeuDeLaVieGraphique& lireJeuDeLaVieGraphique() const;
+/**
+* Accesseur.
+*
+* @return la valeur de @ref ptrGrenouilleGraphique.
+*/
+const GrenouilleGraphique& lireGrenouilleGraphique() const;
 
-  /**
-   * Accesseur.
-   *
-   * @return la valeur de @ref ligne_.
-   */
-  const int& lireLigne() const;
+/**
+* Accesseur.
+*
+* @return la valeur de @ref colonne.
+*/
+const int& lireColonne() const;
 
-  /**
-   * Accesseur.
-   *
-   * @return la valeur de @ref colonne_.
-   */
-  const int& lireColonne() const;
+/**
+* Accesseur.
+*
+* @return la valeur de @ref ligne.
+*/
+const int& lireLigne() const;
 
-protected:
-
-  /**
-   * Demande à cette cellule graphique de se mettre à jour en fonction de l'état
-   * de la cellule correspondante du modèle.
-   * 
-   * @param[in] presentateur - le présentateur à invoquer.
-   */
-  void mettreAJour(const Presentateur& presentateur);
-
-  /**
-   * Callback invoqué lors d'un click de souris sur cette cellule graphique.
-   *
-   * @param[in] evt - l'événement associé au click.
-   * @return la valeur @c true.
-   */
-  bool cbClickSouris(GdkEventButton* evt);
 
 protected:
 
-  /**
-   * Représentation graphique du jeu de la vie propriétaire de cette cellule 
-   * graphique.
-   */
-  JeuDeLaVieGraphique& jeuDeLaVieGraphique_;
-  
-  /**
-   * Numéro de ligne de cette cellule dans le modèle.
-   */
-  const int ligne_;
+/**
+* Demande a cette Cellule graphique de se mettre a jour en fonction de
+* l'etat de la Cellule correspondante du modele.
+* 
+* @param[in] presentateur - le presentateur a invoquer.
+*
+* @note La vue doit etre verrouille pour pouvoir invoquer cette methode.
+*/
+void mettreAJour(const Presentateur& presentateur);
 
-  /**
-   * Numéro de colonne de cette cellule dans le modèle.
-   */
-  const int colonne_;
+/**
+* Callback invoque lors d'un click de souris sur cette Cellule graphique.
+*
+* @param[in] evt - l'evenement associe au click.
+* @return la valeur @c true.
+*/
+bool cbClickSouris(GdkEventButton* evt);
 
-  /**
-   * Pixmaps représentant les deux états possibles d'une cellule.
-   *
-   * @note En toute rigueur, cette map devrait être définie en tant 
-   *   qu'attribut de classe et non d'instance. Cependant, GTK ne supporte pas
-   *   qu'un widget puisse appartenir à plusieurs conteneurs. Par conséquent,
-   *   nous devons répliquer les images, d'ou un gaspillage de mémoire.
-   */
-  std::map< bool, std::unique_ptr< Gtk::Image > > etats_;
+private:
+
+/**
+* Constructeur par recopie.
+*
+* @param[in] recopie - l'instance a recopier.
+*/
+CelluleGraphique(const CelluleGraphique& recopie) = delete;
+
+/**
+* Operateur d'affectation.
+*
+* @param[in] recopie - l'instance a recopier.
+* @return cette instance apres recopie.
+*/
+CelluleGraphique& operator=(const CelluleGraphique& recopie) = delete;
+
+protected:
+
+/**
+* Unique representation graphique du jeu proprietaire de cette 
+* Cellule graphique.
+*/
+GrenouilleGraphique* const ptrGrenouilleGraphique;
+
+/**
+* Numero de ligne de cette Cellule dans le modele.
+*/
+const int ligne;
+
+/**
+* Numero de colonne de cette Cellule dans le modele.
+*/
+const int colonne;
+
+/**
+* Pixmaps representant les etats possibles d'une Cellule graphique.
+*
+* @note En toute rigueur, cette map devrait etre definie en tant 
+*   qu'attribut de classe et non d'instance. Cependant, GTK ne supporte pas
+*   qu'un widget puisse appartenir a plusieurs container. Par consequent,
+*   nous devons repliquer les images, d'ou un gaspillage de memoire.
+*/
+std::map< int, std::unique_ptr< Gtk::Image > > etats;
 
 };
+}
 
 #endif

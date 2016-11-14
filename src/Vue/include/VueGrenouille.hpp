@@ -1,10 +1,10 @@
-/****************************************
-* Declaration de la classe VueGrenouille *
-*****************************************/
+#ifndef Vue_hpp
+#define Vue_hpp
 
-#ifndef VueGrenouille_hpp
-#define VueGrenouille_hpp
-
+#include "GrenouilleGraphique.hpp"
+#include "Chronometre.hh"
+#include "Dimension.hh"
+#include "PointDeVie.hh"
 #include <gtkmm/main.h>
 #include <gtkmm/window.h>
 #include <gtkmm/box.h>
@@ -15,208 +15,302 @@
 #include <gtkmm/aboutdialog.h>
 #include <gtkmm/cellrendererpixbuf.h>
 #include <map>
+#include <mutex>
 
+namespace grenouille {
+
+/**
+* Declarations incompletes necessaires.
+*/
+class Presentateur;
+
+/**
+* @class VueGrenouille VueGrenouille.hpp
+* @brief Vue de l'application.
+* @author Marechal Charlie
+* @author Fontaine Luc
+* @author Souleiman Choukri
+* à
+* Declaration de la classe VueGrenouille representant la vue du jeu grenouilloland, son interface graphique
+*
+*/
 class Vue: public Gtk::Window {
 public:
 
-  // Déclarations d'amitié envers les classes CelluleGraphique et Dimension.
-  friend class CelluleGraphique;
-  friend class Dimension;
+/**
+* Declaration d'amitié.
+*/
+friend class CaseGraphique;
 
-public:
-  /**
-   * Initialise cette classe.
-   *
-   * @note cette méthode doit être appelée avant toutes les autres.
-   */
-  static void initialiser();
+friend class Dimension;
+
+friend class PointDeVie;
 
 public:
 
-  /**
-   * Accesseur.
-   *
-   * @return la valeur de @ref titreVue.
-   */
-  static const Glib::ustring lireTitreVue();
-
-  /**
-   * Accesseur.
-   *
-   * @return la valeur de @ref titreGrenouille.
-   */
-  static const Glib::ustring lireTitreGrenouille;
-
-  /**
-   * Accesseur.
-   *
-   * @return la valeur de @ref titreDimension.
-   */
-  static const Glib::ustring lireTitreDimension();
-
-protected:
-
-  /**
-   * Retourne l'image dont le nom est fourni en argument.
-   *
-   * @param[in] nom - le nom de l'image.
-   * @return l'image correspondante.
-   */
-  static const Glib::RefPtr< Gdk::Pixbuf>& lireImage(const Glib::ustring& nom);
+/**
+* Initialise cette classe.
+*/
+static void initialiser();
 
 public:
 
-  /**
-   * Constructeur logique.
-   *
-   * @param[in] presentateur - la valeur de @ref presentateur_.
-   */
-  Vue(Presentateur& presentateur);
+/**
+* Accesseur.
+* @return la valeur de @ref titreVue.
+*/
+static const Glib::ustring lireTitreVue();
 
-  /**
-   * Constructeur par recopie.
-   *
-   * @param[in] autre - l'instance à recopier.
-   */
-  Vue(const Vue& autre) = delete;
+/**
+* Accesseur.
+* @return la valeur de @ref titreGrenouille.
+*/
+static const Glib::ustring lireTitreGrenouille();
+
+/**
+* Accesseur.
+* @return la valeur de @ref titrePointDeVie.
+*/
+static const Glib::ustring lireTitrePointDeVie();
+
+/**
+* Accesseur.
+* @return la valeur de @ref titreChronometre.
+*/
+static const Glib::ustring lireTitreChronometre();
+
+/**
+* Accesseur.
+* @return la valeur de @ref titreDimension.
+*/
+static const Glib::ustring lireTitreDimension();
+
+protected:
+
+/**
+* Retourne l'image dont le nom est fourni en argument.
+* @param[in] nom - le nom de l'image.
+* @return l'image correspondante.
+*/
+static const Glib::RefPtr< Gdk::Pixbuf>& lireImage(const Glib::ustring& nom);
 
 public:
 
-  /**
-   * Accesseur.
-   *
-   * @return la valeur de @ref presentateur_.
-   */
-  const Presentateur& lirePresentateur() const;
+/**
+* Constructeur logique.
+* @param[in] presentateur - la valeur de @ref _ptrPresentateur.
+*/
+Vue(Presentateur& presentateur);
+
+protected:
+
+/**
+* Met à jour l'affichage des PointDeVie, l'ensemble des CelluleGraphique
+* de GrenouilleGraphique ainsi que le Chronometre.
+*/
+void mettreAJour();
 
 public:
 
-  /**
-   * Opérateur d'affectation.
-   *
-   * @param[in] autre - l'instance à recopier.
-   * @return cette instance après recopie.
-   */
-  Vue& operator=(const Vue& autre) = delete;
+/**
+* Accesseur.
+* @return la valeur de @ref ptrPresentateur.
+*/
+const Presentateur& lirePresentateur() const;
 
 protected:
 
-  /**
-   * Construit les barre de menus et d'outils.
-   * 
-   * @param[in,out] gestionnaire - le gestionnaire de mise en forme associé à
-   *   la fenêtre principale.
-   */
-  void construireBarreMenusEtOutils(Gtk::VBox& gestionnaire);
-
-  /**
-   * Construit la partie centrale de la fenêtre principale qui contient un jeu 
-   * de la vie graphique.
-   * 
-   * @param[in,out] gestionnaire - le gestionnaire de mise en forme associé à
-   *   la fenêtre principale.
-   */
-  void construirePartieCentrale(Gtk::VBox& gestionnaire);
-
-  /**
-   * Construit la partie inférieure de la fenêtre principale qui contient le
-   * contrôleur de dimension du jeu de la vie.
-   * 
-   * @param[in,out] gestionnaire - le gestionnaire de mise en forme associé à
-   *   la fenêtre principale.
-   */
-  void construirePartieInferieure(Gtk::VBox& gestionnaire);
+/**
+* Accesseur.
+* @return la valeur de @ref ptrPresentateur.
+*/
+Presentateur& lirePresentateurModifiable();
 
 protected:
 
-  /**
-   * Callback permettant de préparer le jeu pour une nouvelle 
-   * partie. 
-   *
-   * @note Cette méthode est invoquée suite à un click sur l'entrée "Nouveau" du
-   * menu "Commandes" ou bien sur le bouton correspondant dans la barre 
-   * d'outils.
-   */
-  void cbNouveau();
+/**
+* Verrouille cette vue.
+*/
+void verrouiller();
 
-  /**
-   * Callback permettant de changer la résolution du jeu de la vie.
-   * 
-   * @note Cette méthode est invoquée par le contrôleur de la résolution du jeu
-   *   de la vie.
-   */
-  void cbChangerModele();
-
-  /**
-   * Callback permettant de présenter l'application et ses auteurs. 
-   *
-   * @note Cette méthode est invoquée suite à un click sur l'entrée 
-   *   "A propos ..." du menu "Commandes" ou bien sur le bouton correspondant 
-   *   dans la barre d'outils.
-   */
-  void cbAPropos();
-
-  /**
-   * Callback permettant de quitter proprement l'application. 
-   *
-   * @note Cette méthode est invoquée suite à un click sur l'entrée "Quitter" du
-   *   menu "Commandes" ou bien sur le bouton correspondant dans la barre 
-   *   d'outils.
-   */
-  void cbQuitter();
+/**
+* Deverrouille cette vue.
+*/
+void deverrouiller();
 
 protected:
 
-  /**
-   * Titre de cette vue.
-   */
-  static const Glib::ustring titreVue;
+/**
+* Construit les barre de menus et d'outils.
+* @param[in,out] gestionnaire - le gestionnaire de mise en forme associe a
+* la fenetre principale.
+*/
+void construireBarreMenusEtOutils(Gtk::VBox& gestionnaire);
 
-  /**
-   * Titre du jeu.
-   */
-  static const Glib::ustring titreGrenouille;
+/**
+* Construit la partie centrale de la fenetre principale contenant le 
+* GrenouilleGraphique et les PointDeVie.
+* @param[in,out] gestionnaire - le gestionnaire de mise en forme associe a
+*   la fenetre principale.
+*/
+void construirePartieCentrale(Gtk::VBox& gestionnaire);
 
-  /**
-   * Titre du contrôleur de la dimension
-   */
-  static const Glib::ustring titreDimension;
-
-  /**
-   * Chemins d'accès au répertoire contenant les images.
-   */
-  static const Glib::ustring cheminImages;
-
-  /**
-   * Map permettant de stocker les images manipulées par cette vue.
-   */
-  static std::map< Glib::ustring, Glib::RefPtr< Gdk::Pixbuf> > images;
+/**
+* Construit la partie inferieure de la fenetre principale contenant le
+* controleur de la dimension du jeu. 
+* @param[in,out] gestionnaire - le gestionnaire de mise en forme associe a
+* la fenetre principale.
+*/
+void construirePartieInferieure(Gtk::VBox& gestionnaire);
 
 protected:
 
-  /**
-   * Présentateur associé à cette vue.
-   */
-  Presentateur& presentateur;
+/**
+* Callback permettant de preparer le jeu pour une nouvelle partie. Cette methode
+* est appellée lors d'une pression sur le bouton nouveau de la barre de commande.
+* @note Lors de cette methode la vue est verrouillee.
+*/
+void cbNouveau();
 
-  /**
-   * Jeu de la vie graphique de cette vue.
-   */
-  std::unique_ptr< GrenouilleGraphique > ptrgrenouilleGraphique;
+/**
+* Callback permettant de preparer une nouvelle partie avec une autre dimension.
+* @note Lors de cette methode la vue est verrouillee.
+*/
+void cbChangerModele();
 
-  /**
-   * Contrôleur de la dimension du jeu de la vie de cette vue.
-   */
-  Dimension dimension;
+/**
+* Callback permettant de presenter l'application et ses auteurs. Cette
+* methode est appellee suite a une pression sur l entre "A propos ..." du menu
+* "Commandes" ou bien sur le bouton correspondant dans la barre d'outils.
+*/
+void cbAPropos();
 
-  /**
-   * Gestionnaire de mise en forme associé à la partie centrale de la
-   * fenêtre principale. Cette partie contient le jeu de la vie graphique qui
-   * change avec le modèle. C'est pour cette raison que nous la définissons en 
-   * tant qu'attribut de cette vue.
-   */
-  Gtk::HBox gestionnaireCentre_;
+/**
+* Callback permettant de quitter l'application. Cette methode
+* est appellee suite a une pression sur le l entree "Quitter" du menu "Commandes"
+* ou bien sur le bouton correspondant dans la barre d'outils.
+*
+* @note Lors de cette methode la vue est verrouillee.
+*/
+void cbQuitter();
+
+private:
+
+/**
+* Constructeur par recopie.
+* @param[in] recopie - l'instance a recopier.
+*/
+VueGrenouille(const VueGrenouille& recopie) = delete;
+
+/**
+* Operateur d'affectation.
+*
+* @param[in] recopie - l'instance a recopier.
+* @return cette instance apres recopie.
+*/
+VueGrenouille& operator=(const VueGrenouille& recopie) = delete;
+
+protected:
+
+/**
+* Titre de cette vue.
+*/
+static const Glib::ustring titreVue;
+
+/**
+* Titre de la representation graphique du jeu grenouille.
+*/
+static const Glib::ustring titreGrenouille;
+
+/**
+* Titre du panneau de points de vie.
+*/
+static const Glib::ustring titrePointDeVie;
+
+/**
+* Titre du controleur du chronomètre du jeu.
+*/
+static const Glib::ustring titreChronometre;
+
+/**
+* Titre du controleur de la dimension du jeu.
+*/
+static const Glib::ustring titreDimension;
+
+
+/**
+* Chemin d'acces au répertoire contenant les images.
+*/
+static const Glib::ustring cheminImages;
+
+/**
+* Stockage des images dans un map.
+*/
+static std::map< Glib::ustring, Glib::RefPtr< Gdk::Pixbuf> > images;
+
+protected:
+
+/**
+* Presentateur unique associe a cette vue.
+*/
+Presentateur* const ptrPresentateur;
+
+/**
+* Representation graphique du modele.
+*/
+std::unique_ptr< GrenouilleGraphique > _ptrGrenouilleGraphique;
+
+/**
+* Affichage des points de vie de la grenouille.
+*/
+PointDeVie pointDeVie;
+
+/**
+* Controleur de la dimension du jeu.
+*/
+Dimension dimension;
+
+/**
+* Affichage du chronomètre du jeu.
+*/
+Chronometre chronometre;
+
+/**
+* Gestionnaire de la partie centrale de la fenetre principale
+* contenant GrenouilleGraphique et PointDeVie.
+*/
+Gtk::HBox gestionnaireCentre;
+
+/**
+* Gestionnaire de la partie inférieure de la fenetre principale
+* contenant Dimension et Chronometre.
+*/
+Gtk::HBox gestionnaireBas;
+
+/**
+* Verrou associe à cette vue.
+*/
+std::mutex verrou;
+
+/**
+* Sous-classe Delegation amie avec le Presentateur, elle permet de mettre à jour la vue sans pour autant
+* donner accès à des methodes non voulu
+*/
+public :
+class Delegation
+{
+	public :
+		friend class Presentateur;			
+
+	private :
+
+		static void mettreAJour(Vue& vue)
+		{
+			vue.mettreAJour();
+		}
+};
 
 };
+}
 
 #endif

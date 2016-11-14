@@ -67,7 +67,7 @@ protected:
 /**
 * Barre de progression.
 */
-Gtk::ProgressBar barreDeProgression;
+Gtk::ProgressBar _barreDeProgression;
 
 };
 }

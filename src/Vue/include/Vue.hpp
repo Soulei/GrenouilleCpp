@@ -14,237 +14,239 @@
 #include <gtkmm/cellrendererpixbuf.h>
 #include <map>
 
-// Déclaration incomplète de la classe Presentateur.
-class Presentateur;
-
-/**
- * @class Vue Vue.hpp
- *
- * Déclaration de la classe Vue représentant l'interface graphique de 
- * l'application
- *
- * @note Une instance de cette classe ne peut être dupliquée implicitement.
- */
-class Vue: public Gtk::Window {
-public:
-
-  // Déclarations d'amitié envers les classes CelluleGraphique et Dimension.
-  friend class CelluleGraphique;
-  friend class Dimension;
-
-public:
+namespace grenouilloland{
+  // Déclaration incomplète de la classe Presentateur.
+  class Presentateur;
 
   /**
-   * Initialise cette classe.
+   * @class Vue Vue.hpp
    *
-   * @note cette méthode doit être appelée avant toutes les autres.
-   */
-  static void initialiser();
-
-public:
-
-  /**
-   * Accesseur.
+   * Déclaration de la classe Vue représentant l'interface graphique de
+   * l'application
    *
-   * @return la valeur de @ref titreVue_.
+   * @note Une instance de cette classe ne peut être dupliquée implicitement.
    */
-  static const Glib::ustring lireTitreVue();
+  class Vue: public Gtk::Window {
+  public:
 
-  /**
-   * Accesseur.
-   *
-   * @return la valeur de @ref titreJeuDeLaVie_.
-   */
-  static const Glib::ustring lireTitreJeuDeLaVie();
+    // Déclarations d'amitié envers les classes CelluleGraphique et Dimension.
+    friend class CelluleGraphique;
+    friend class Dimension;
 
-  /**
-   * Accesseur.
-   *
-   * @return la valeur de @ref titreDimension_.
-   */
-  static const Glib::ustring lireTitreDimension();
+  public:
 
-protected:
+    /**
+     * Initialise cette classe.
+     *
+     * @note cette méthode doit être appelée avant toutes les autres.
+     */
+    static void initialiser();
 
-  /**
-   * Retourne l'image dont le nom est fourni en argument.
-   *
-   * @param[in] nom - le nom de l'image.
-   * @return l'image correspondante.
-   */
-  static const Glib::RefPtr< Gdk::Pixbuf>& lireImage(const Glib::ustring& nom);
+  public:
 
-public:
+    /**
+     * Accesseur.
+     *
+     * @return la valeur de @ref titreVue_.
+     */
+    static const Glib::ustring lireTitreVue();
 
-  /**
-   * Constructeur logique.
-   *
-   * @param[in] presentateur - la valeur de @ref presentateur_.
-   */
-  Vue(Presentateur& presentateur);
+    /**
+     * Accesseur.
+     *
+     * @return la valeur de @ref titreJeuDeLaVie_.
+     */
+    static const Glib::ustring lireTitreJeuDeLaVie();
 
-  /**
-   * Constructeur par recopie.
-   *
-   * @param[in] autre - l'instance à recopier.
-   */
-  Vue(const Vue& autre) = delete;
+    /**
+     * Accesseur.
+     *
+     * @return la valeur de @ref titreDimension_.
+     */
+    static const Glib::ustring lireTitreDimension();
 
-public:
+  protected:
 
-  /**
-   * Accesseur.
-   *
-   * @return la valeur de @ref presentateur_.
-   */
-  const Presentateur& lirePresentateur() const;
+    /**
+     * Retourne l'image dont le nom est fourni en argument.
+     *
+     * @param[in] nom - le nom de l'image.
+     * @return l'image correspondante.
+     */
+    static const Glib::RefPtr< Gdk::Pixbuf>& lireImage(const Glib::ustring& nom);
 
-public:
+  public:
 
-  /**
-   * Opérateur d'affectation.
-   *
-   * @param[in] autre - l'instance à recopier.
-   * @return cette instance après recopie.
-   */
-  Vue& operator=(const Vue& autre) = delete;
+    /**
+     * Constructeur logique.
+     *
+     * @param[in] presentateur - la valeur de @ref presentateur_.
+     */
+    Vue(Presentateur& presentateur);
 
-protected:
+    /**
+     * Constructeur par recopie.
+     *
+     * @param[in] autre - l'instance à recopier.
+     */
+    Vue(const Vue& autre) = delete;
 
-  /**
-   * Accesseur.
-   *
-   * @return la valeur de @ref presentateur_.
-   */
-  Presentateur& lirePresentateurModifiable();
+  public:
 
-protected:
+    /**
+     * Accesseur.
+     *
+     * @return la valeur de @ref presentateur_.
+     */
+    const Presentateur& lirePresentateur() const;
 
-  /**
-   * Construit les barre de menus et d'outils.
-   * 
-   * @param[in,out] gestionnaire - le gestionnaire de mise en forme associé à
-   *   la fenêtre principale.
-   */
-  void construireBarreMenusEtOutils(Gtk::VBox& gestionnaire);
+  public:
 
-  /**
-   * Construit la partie centrale de la fenêtre principale qui contient un jeu 
-   * de la vie graphique.
-   * 
-   * @param[in,out] gestionnaire - le gestionnaire de mise en forme associé à
-   *   la fenêtre principale.
-   */
-  void construirePartieCentrale(Gtk::VBox& gestionnaire);
+    /**
+     * Opérateur d'affectation.
+     *
+     * @param[in] autre - l'instance à recopier.
+     * @return cette instance après recopie.
+     */
+    Vue& operator=(const Vue& autre) = delete;
 
-  /**
-   * Construit la partie inférieure de la fenêtre principale qui contient le
-   * contrôleur de dimension du jeu de la vie.
-   * 
-   * @param[in,out] gestionnaire - le gestionnaire de mise en forme associé à
-   *   la fenêtre principale.
-   */
-  void construirePartieInferieure(Gtk::VBox& gestionnaire);
+  protected:
 
-protected:
+    /**
+     * Accesseur.
+     *
+     * @return la valeur de @ref presentateur_.
+     */
+    Presentateur& lirePresentateurModifiable();
 
-  /**
-   * Callback permettant de calculer la génération de cellules suivante. 
-   *
-   * @note Cette méthode est invoquée suite à un click sur l'entrée "Demarrer" 
-   * du menu "Commandes ou bien sur le bouton correspondant dans la barre 
-   * d'outils.
-   */
-  void cbSuivante();
+  protected:
 
-  /**
-   * Callback permettant de préparer le jeu de la vie pour une nouvelle 
-   * simulation. 
-   *
-   * @note Cette méthode est invoquée suite à un click sur l'entrée "Nouveau" du
-   * menu "Commandes" ou bien sur le bouton correspondant dans la barre 
-   * d'outils.
-   */
-  void cbNouveau();
+    /**
+     * Construit les barre de menus et d'outils.
+     *
+     * @param[in,out] gestionnaire - le gestionnaire de mise en forme associé à
+     *   la fenêtre principale.
+     */
+    void construireBarreMenusEtOutils(Gtk::VBox& gestionnaire);
 
-  /**
-   * Callback permettant de changer la résolution du jeu de la vie.
-   * 
-   * @note Cette méthode est invoquée par le contrôleur de la résolution du jeu
-   *   de la vie.
-   */
-  void cbChangerModele();
+    /**
+     * Construit la partie centrale de la fenêtre principale qui contient un jeu
+     * de la vie graphique.
+     *
+     * @param[in,out] gestionnaire - le gestionnaire de mise en forme associé à
+     *   la fenêtre principale.
+     */
+    void construirePartieCentrale(Gtk::VBox& gestionnaire);
 
-  /**
-   * Callback permettant de présenter l'application et ses auteurs. 
-   *
-   * @note Cette méthode est invoquée suite à un click sur l'entrée 
-   *   "A propos ..." du menu "Commandes" ou bien sur le bouton correspondant 
-   *   dans la barre d'outils.
-   */
-  void cbAPropos();
+    /**
+     * Construit la partie inférieure de la fenêtre principale qui contient le
+     * contrôleur de dimension du jeu de la vie.
+     *
+     * @param[in,out] gestionnaire - le gestionnaire de mise en forme associé à
+     *   la fenêtre principale.
+     */
+    void construirePartieInferieure(Gtk::VBox& gestionnaire);
 
-  /**
-   * Callback permettant de quitter proprement l'application. 
-   *
-   * @note Cette méthode est invoquée suite à un click sur l'entrée "Quitter" du
-   *   menu "Commandes" ou bien sur le bouton correspondant dans la barre 
-   *   d'outils.
-   */
-  void cbQuitter();
+  protected:
 
-protected:
+    /**
+     * Callback permettant de calculer la génération de cellules suivante.
+     *
+     * @note Cette méthode est invoquée suite à un click sur l'entrée "Demarrer"
+     * du menu "Commandes ou bien sur le bouton correspondant dans la barre
+     * d'outils.
+     */
+    void cbSuivante();
 
-  /**
-   * Titre de cette vue.
-   */
-  static const Glib::ustring titreVue_;
+    /**
+     * Callback permettant de préparer le jeu de la vie pour une nouvelle
+     * simulation.
+     *
+     * @note Cette méthode est invoquée suite à un click sur l'entrée "Nouveau" du
+     * menu "Commandes" ou bien sur le bouton correspondant dans la barre
+     * d'outils.
+     */
+    void cbNouveau();
 
-  /**
-   * Titre du jeu de la vie graphique.
-   */
-  static const Glib::ustring titreJeuDeLaVie_;
+    /**
+     * Callback permettant de changer la résolution du jeu de la vie.
+     *
+     * @note Cette méthode est invoquée par le contrôleur de la résolution du jeu
+     *   de la vie.
+     */
+    void cbChangerModele();
 
-  /**
-   * Titre du contrôleur de la dimension du jeu de la vie.
-   */
-  static const Glib::ustring titreDimension_;
+    /**
+     * Callback permettant de présenter l'application et ses auteurs.
+     *
+     * @note Cette méthode est invoquée suite à un click sur l'entrée
+     *   "A propos ..." du menu "Commandes" ou bien sur le bouton correspondant
+     *   dans la barre d'outils.
+     */
+    void cbAPropos();
 
-  /**
-   * Chemins d'accès au répertoire contenant les images.
-   */
-  static const Glib::ustring cheminImages_;
+    /**
+     * Callback permettant de quitter proprement l'application.
+     *
+     * @note Cette méthode est invoquée suite à un click sur l'entrée "Quitter" du
+     *   menu "Commandes" ou bien sur le bouton correspondant dans la barre
+     *   d'outils.
+     */
+    void cbQuitter();
 
-  /**
-   * Map permettant de stocker les images manipulées par cette vue.
-   */
-  static std::map< Glib::ustring, Glib::RefPtr< Gdk::Pixbuf> > images_;
+  protected:
 
-protected:
+    /**
+     * Titre de cette vue.
+     */
+    static const Glib::ustring titreVue_;
 
-  /**
-   * Présentateur associé à cette vue.
-   */
-  Presentateur& presentateur_;
+    /**
+     * Titre du jeu de la vie graphique.
+     */
+    static const Glib::ustring titreJeuDeLaVie_;
 
-  /**
-   * Jeu de la vie graphique de cette vue.
-   */
-  std::unique_ptr< JeuDeLaVieGraphique > ptrJeuDeLaVieGraphique_;
+    /**
+     * Titre du contrôleur de la dimension du jeu de la vie.
+     */
+    static const Glib::ustring titreDimension_;
 
-  /**
-   * Contrôleur de la dimension du jeu de la vie de cette vue.
-   */
-  Dimension dimension_;
+    /**
+     * Chemins d'accès au répertoire contenant les images.
+     */
+    static const Glib::ustring cheminImages_;
 
-  /**
-   * Gestionnaire de mise en forme associé à la partie centrale de la
-   * fenêtre principale. Cette partie contient le jeu de la vie graphique qui
-   * change avec le modèle. C'est pour cette raison que nous la définissons en 
-   * tant qu'attribut de cette vue.
-   */
-  Gtk::HBox gestionnaireCentre_;
+    /**
+     * Map permettant de stocker les images manipulées par cette vue.
+     */
+    static std::map< Glib::ustring, Glib::RefPtr< Gdk::Pixbuf> > images_;
 
-};
+  protected:
+
+    /**
+     * Présentateur associé à cette vue.
+     */
+    Presentateur& presentateur_;
+
+    /**
+     * Jeu de la vie graphique de cette vue.
+     */
+    std::unique_ptr< JeuDeLaVieGraphique > ptrJeuDeLaVieGraphique_;
+
+    /**
+     * Contrôleur de la dimension du jeu de la vie de cette vue.
+     */
+    Dimension dimension_;
+
+    /**
+     * Gestionnaire de mise en forme associé à la partie centrale de la
+     * fenêtre principale. Cette partie contient le jeu de la vie graphique qui
+     * change avec le modèle. C'est pour cette raison que nous la définissons en
+     * tant qu'attribut de cette vue.
+     */
+    Gtk::HBox gestionnaireCentre_;
+
+  };
+}
 
 #endif

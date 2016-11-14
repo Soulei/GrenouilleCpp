@@ -3,63 +3,65 @@
 
 #include <gtkmm/frame.h>
 
-namespace grenouille {
+	namespace grenouilloland {
 
 
-class VueGrenouille;
-
-/**
-*Declaration de la classe PointDeVie repésentant la santé de la grenouille 
-*/
-class PointDeVie: public Gtk::Frame {
-
-/**
-*(Attention)
-*Declaration d'amitié.
-*/
-friend class Vue;
-
-public:
+	class VueGrenouille;
 
 	/**
-	* Constructeur logique.
-	*/
-	PointsDeVie(const Glib::ustring& titre);	
+	 * @class PointsDeVie PointsDeVie.hpp
+	 * @brief Declaration de la classe PointDeVie repésentant la santé de la grenouille
 
-protected:
-	/**
-	* Methode qui met à jour la santé de la grenouille
 	*/
-	void mettreAJour(const Presentateur& presentateur);
-
-private:
+	class PointDeVie: public Gtk::Frame {
 
 	/**
-	* Constructeur par recopie.
+	*(Attention)
+	*Declaration d'amitié.
 	*/
-	PointDeVie(const PointsDeVie& autre) = delete;
+	friend class Vue;
 
-	/**
-	* Operateur d'affectation.
-	*
-	* @param[in] autre - l'instance à recopier.
-	* @return cette instance apres recopie.
-	*/
-	PointsDeVie& operator=(const PointsDeVie& autre) = delete;
+	public:
 
-protected:
+		/**
+		* Constructeur logique.
+		*/
+		PointsDeVie(const Glib::ustring& titre);
 
-	/**
-	* Image.
-	*/
-	Gtk::Image imageCoeur;
+	protected:
+		/**
+		* Methode qui met à jour la santé de la grenouille
+		*/
+		void mettreAJour(const Presentateur& presentateur);
 
-	/**
-	* Label.
-	*/
-	Gtk::Label labelPv;
+	private:
 
-};
+		/**
+		* Constructeur par recopie.
+		*/
+		PointDeVie(const PointsDeVie& autre) = delete;
+
+		/**
+		* Operateur d'affectation.
+		*
+		* @param[in] autre - l'instance à recopier.
+		* @return cette instance après recopie.
+		*/
+		PointsDeVie& operator=(const PointsDeVie& autre) = delete;
+
+	protected:
+
+		/**
+		* Image.
+		*/
+		Gtk::Image imageCoeur;
+
+		/**
+		* Label.
+		*/
+		Gtk::Label labelPv;
+
+	};
 }
 
 #endif

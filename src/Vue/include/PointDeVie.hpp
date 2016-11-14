@@ -9,7 +9,7 @@
 	class VueGrenouille;
 
 	/**
-	 * @class PointsDeVie PointsDeVie.hpp
+	 * @class PointDeVie PointDeVie.hpp
 	 * @brief Declaration de la classe PointDeVie repésentant la santé de la grenouille
 
 	*/
@@ -26,7 +26,7 @@
 		/**
 		* Constructeur logique.
 		*/
-		PointsDeVie(const Glib::ustring& titre);
+		PointDeVie(const Glib::ustring& titre);
 
 	protected:
 		/**
@@ -39,7 +39,7 @@
 		/**
 		* Constructeur par recopie.
 		*/
-		PointDeVie(const PointsDeVie& autre) = delete;
+		PointDeVie(const PointDeVie& autre) = delete;
 
 		/**
 		* Operateur d'affectation.
@@ -47,7 +47,7 @@
 		* @param[in] autre - l'instance à recopier.
 		* @return cette instance après recopie.
 		*/
-		PointsDeVie& operator=(const PointsDeVie& autre) = delete;
+		PointDeVie& operator=(const PointDeVie& autre) = delete;
 
 	protected:
 

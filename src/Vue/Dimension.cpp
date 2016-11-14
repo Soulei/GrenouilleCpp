@@ -1,76 +1,86 @@
 /****************************
- * Définition de la classe. *
- ****************************/
+* Definition de la classe. *
+****************************/
 
 #include "Presentateur.hpp"
 #include "Dimension.hpp"
 
+using namespace grenouilloland;
+
 /**************
- * Dimension. *
- **************/
+* Dimension. *
+**************/
 
 Dimension::Dimension(const Glib::ustring& titre, Vue& vue):
-   Gtk::Frame(titre),
-   ptrVue_(&vue) {
+Gtk::Frame(titre),
+ptrVue(&vue),
+listeDimension(false)
+{
 
-  // Obtention du présentateur.
-  const Presentateur& presentateur = vue.lirePresentateur();
+// Obtention du presentateur.
+const Presentateur& presentateur = vue.lirePresentateur();
 
-  // Ajustement basé sur les dimension minimum, maximum et initiale du modèle.
-  const int minimum = presentateur.lireDimensionMinimum();
-  const int maximum = presentateur.lireDimensionMaximum();
-  const int initiale = presentateur.dimension();
-  const double incrPas = 1.0;
-  const double incrPage = 2.0;
-  const double taillePage = 0.0;
-  Glib::RefPtr< Gtk::Adjustment > ajustement =
-    Gtk::Adjustment::create(initiale, 
-			    minimum, 
-			    maximum,
-			    incrPas,
-			    incrPage,
-			    taillePage);
+// Récupération des valeurs minimale, maximale et initiale de la dimension
+// du jeu.
+const int minimum = presentateur.lireDimensionMinimum();
+const int maximum = presentateur.lireDimensionMaximum();
+const int initiale = presentateur.dimension();
 
-  // Finalisation de la barre de défilement et ajout dans le contour.
-  barreDeDefilement_.set_adjustment(ajustement);
-  add(barreDeDefilement_);
+std::ostringstream convert;
 
-  // Connection de l'événement value_changed à son callback. 
-  auto crochet = sigc::mem_fun(*this, &Dimension::cbChangementDeValeur);
-  ajustement->signal_value_changed().connect(crochet);
+// Création des champs du menu déroulant.  	
+for(int i = minimum; i <= maximum; i++) {
+convert << i;
+_listeDimension.append(convert.str());
+convert.str("");
+}
+
+convert << initiale;
+
+// Dimension initiale en champs sélectionné.
+_listeDimension.set_active_text(convert.str());
+
+add(_listeDimension);
+
+// Connection de l'évènement changement de champs sélectionné sur 
+// la méthode cbChangementDeValeur.
+_listeDimension.signal_changed().connect(sigc::mem_fun(*this, &Dimension::cbChangementDeValeur));
 
 }
 
 /************
- * lireVue. *
- ************/
+* lireVue. *
+************/
 
 const Vue& 
 Dimension::lireVue() const {
-  return *ptrVue_;
+return *_ptrVue;
 }
 
 /***********
- * valeur. *
- ***********/
+* valeur. *
+***********/
 
 int 
 Dimension::valeur() const {
-  return barreDeDefilement_.get_value(); 
+Glib::ustring text = _listeDimension.get_active_text();
+int value;
+std::stringstream(text) >> value;
+return value;
 }
 
 /*************************
- * cbChangementDeValeur. *
- *************************/
+* cbChangementDeValeur. *
+*************************/
 
 void 
 Dimension::cbChangementDeValeur() {
 
-  // Effacement de ce contrôle pour pouvoir être réaffichée par sa vue 
-  // propriétaire tout à l'heure.
-  hide();
+// Effacement de ce controle pour pouvoir etre reaffichee par sa vue
+// proprietaire tout a l'heure.
+hide();
 
-  // Changement du modèle.
-  ptrVue_->cbChangerModele();
+// Changement de modele.
+_ptrVue->cbChangerModele();
 
 }

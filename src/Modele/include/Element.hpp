@@ -18,9 +18,9 @@
    /*! \class Element
     * \brief classe representant les elements du plateau de jeu
     */
+    enum Couleur{Vert, RougeMortel, RougeDopant, Rose, Jaune, None};
    class Element{
    public:
-     enum Couleur{Vert, RougeMortel, RougeDopant, Rose, Jaune, None}
      /*!
       *  \brief Reduire les point de vie de l'element
       *  \return void
@@ -30,14 +30,14 @@
        *  \brief Couleur de l'element
        *  \return string etant la couleur
        */
-      virtual Couleur getCouleur();
+      virtual Couleur const getCouleur();
       /*!
        *  \brief point de vie de l'element
        *  \return int
        */
       virtual int getvie();
     public:
-      Couleur type_;
+      Couleur const type_;
       int pntvie_;
 
 

@@ -27,7 +27,7 @@ namespace grenouilloland
      *  \param x : abscisse
      *  \param y : ordonne
      */
-    Coordonnee(cont int & x, const int & y);
+    Coordonnee(const int & x, const int & y);
     /*!
      *  \brief Getter de x
      *  \return int qui est x

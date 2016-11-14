@@ -1,38 +1,40 @@
 #include "Case.hpp"
 
-/*
-Case(const Element & elt);
-virtual ~Case();
-void remplaceElt(Element const & e);
-Coordonnee getPosition();
-void setPosition(Coordonnee & coord) const;
-Element e_;
-Coordonnee pos_;
-*/
-/*Constructeur Case*/
-Case::Case(const Element & elt){
-  e_(elt);
-};
+namespace grenouilloland{
+  /*Constructeur Case*/
+  Case::Case(const Coordonnee * c): pos_(c){
+  };
 
-/*Destructeur Case*/
-Case:: ~Case(){};
+  /*RemplacerElt*/
+  Case::remplaceElt(Element const * e){
+    e_ = e;
+  };
 
-/*RemplacerElt*/
-Case::remplaceElt(Element const & e){
-  e_ = *e;
-};
+  /*Position*/
+  Case::getPosition(){
+    return pos_;
+  };
 
-/*Position*/
-Case::getPosition(){
-  return pos_;
-};
+  const Element
+  Case::getElement(){
+    return e_;
+  };
 
-const Element
-Case::getElement(){
-  return e_;
-};
+  const Element
+  Case::setElement(Element * e){
+    e_ = e;
+  };
 
-/*Set position*/
-Case::setPosition(Coordonnee & coord){
-  pos_ = *coord;
-};
+  void
+  Case::vieillirElt(){
+    e_.vieillir();
+  }
+  Couleur const
+  Case::couleurElt() const{
+    return e_.getCouleur();
+  }
+  /*Set position*/
+  Case::setPosition(Coordonnee & coord){
+    pos_ = coord;
+  };
+}

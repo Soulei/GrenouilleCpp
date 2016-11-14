@@ -2,6 +2,8 @@
 #define Jeu_hpp
 
 #include "Grenouille.hpp"
+#include "Case.hpp"
+#include <vector>
 
 /*!
  * \file Jeu.hpp
@@ -51,10 +53,24 @@ namespace grenouilloland
      */
     void lancerJeu();
 
+    /**
+     * Accesseur.
+     *
+     * @return la valeur de @ref dimension_.
+     */
+    const int& lireDimension() const;
+
+    /**
+     * Accesseur.
+     *
+     * @return la valeur de @ref grille_.
+     */
+     const std::vector< Case > & lireGrille();
+
   protected:
     Grenouille * grenouille_;
     const int dimension_;
-    Grille mare_;
+    std::vector< Case > grille_;
   };
 };
 

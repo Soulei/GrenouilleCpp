@@ -30,13 +30,7 @@ namespace grenouilloland
      *  Constructeur de la classe Case
      *  \param elt : element à initialiser avec la case
      */
-    Case(const Element & elt);
-
-    /*!
-     *  \brief Destructeur
-     *  Destructeur de la classe Case
-     */
-    virtual ~Case();
+    Case(const Coordonnee * c);
 
   public:
     /*!
@@ -47,7 +41,7 @@ namespace grenouilloland
      *  \param e : element à placer dans la case
      *  \return void
      */
-    void remplaceElt(Element const & e);
+    void remplaceElt(Element const * e);
 
     /*!
      *  \brief Position de la case
@@ -60,12 +54,21 @@ namespace grenouilloland
      *  \return element
      */
     const Element getElement();
-
+    /*!
+     *  \brief Faire vieillir l'element de la case
+     *  \return void
+     */
+    void vieillirElt();
+    /*!
+     *  \brief Couleur de l'element
+     *  \return Couleur
+     */
+    Couleur const couleurElt() const;
     /*!
      *  \brief l'element contenu dans la case
      *  \return element
      */
-    void setElement(Element & e);
+    void setElement(Element * e);
     /*!
      *  \brief Setter de l'attribut pos
      *  \param coord : coordonne de la case
@@ -73,8 +76,8 @@ namespace grenouilloland
     void setPosition(Coordonnee & coord) const;
 
   private:
-    Element e_;
-    Coordonnee pos_;
+    Element * e_;
+    Coordonnee * pos_;
   };
 };
 

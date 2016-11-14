@@ -24,6 +24,7 @@
       *  \brief Constructeur
       *  Constructeur de la classe Eau
       */
+    public:
      Eau();
    };
 };

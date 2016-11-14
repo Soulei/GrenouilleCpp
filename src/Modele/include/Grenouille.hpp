@@ -2,6 +2,8 @@
 #define Grenouille_hpp
 
 #include "Coordonnee.hpp"
+#include "Element.hpp"
+
 
 /*!
  * \file Grenouille.hpp
@@ -20,10 +22,13 @@ namespace grenouilloland
   /*! \class Grenouille
    * \brief classe representant la grenouille
    */
+
+  class Jeu;
+
   class Grenouille
   {
   public:
-    Grenouille();
+    Grenouille(Coordonnee & c);
     /*!
      *  \brief Deplacer la grenouille
      *
@@ -59,12 +64,12 @@ namespace grenouilloland
 
     /*!
      *  \brief Reduire les points de vie de la grenouille
-     *
+     *  \param e elment qui influence les points de vie des la grenouille
      *  Methode qui permet de modifier les points de vie de
      *  la grenouille selon le type d'element rencontre dans la mare
      *  \return void
      */
-    void reduirePtvie(const Element & e);
+    void reduirePtvie(const Element & e) const;
     /*!
      *  \brief Getter vie
      *  \return int points de vie
@@ -83,6 +88,23 @@ namespace grenouilloland
      *  \return void
      */
     void guerir();
+    /*!
+     *  \brief permet de connaitre si la grenouille est vivante
+     *  ses points de vie
+     *  \return true si oui false sinon
+     */
+    bool estVivante();
+    /*!
+     *  \brief permet de connaitre si un chemin existe
+     *  \return true si oui false sinon
+     */
+     bool cheminExiste(const Jeu & jeu) const;
+     /*!
+      *  \brief Accesseur
+      *  \return coordonnee de la position courante de la grenouile
+      */
+    Coordonnee getPosCour();
+
 
   private:
     bool malade_;

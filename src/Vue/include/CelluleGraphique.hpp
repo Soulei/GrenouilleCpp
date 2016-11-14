@@ -20,7 +20,7 @@ class GrenouilleGraphique;
 * @author Marechal Charlie
 * @author Fontaine Luc
 * @author Souleiman Choukri
-*
+* @author Yan Xiaoge
 * Declaration de la classe CelluleGraphique representant graphiquement une
 * Cellule du modele.
 */

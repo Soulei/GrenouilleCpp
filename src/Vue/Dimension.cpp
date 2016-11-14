@@ -17,35 +17,32 @@ ptrVue(&vue),
 listeDim(false)
 {
 
-// Obtention du presentateur.
-const Presentateur& presentateur = vue.lirePresentateur();
+	// Obtention du presentateur.
+	const Presentateur& presentateur = vue.lirePresentateur();
 
-// Récupération des valeurs minimale, maximale et initiale de la dimension
-// du jeu.
-const int min = presentateur.lireDimensionMinimum();
-const int max = presentateur.lireDimensionMaximum();
-const int init = presentateur.dimension();
+	// Obtention des valeurs min, max et init de la dimension du jeu.
+	const int min = presentateur.lireDimensionMinimum();
+	const int max = presentateur.lireDimensionMaximum();
+	const int init = presentateur.dimension();
 
-std::ostringstream conversion;
+	std::ostringstream conversion;
 
-// Création des champs du menu déroulant.  	
-for(int i = min; i <= max; i++) {
-conversion << i;
-listeDim.append(conversion.str());
-conversion.str("");
-}
+	// Création des champs du menu déroulant.  	
+	for(int i = min; i <= max; i++) {
+		conversion << i;
+		listeDim.append(conversion.str());
+		conversion.str("");
+	}
 
-conversion << init;
+	conversion << init;
 
-// Dimension initiale en champs sélectionné.
-listeDim.set_active_text(conversion.str());
+	// Dimension initiale 
+	listeDim.set_active_text(conversion.str());
 
-add(listeDim);
+	add(listeDim);
 
-// Connection de l'évènement changement de champs sélectionné sur 
-// la méthode cbChangementDeValeur.
-listeDim.signal_changed().connect(sigc::mem_fun(*this, &Dimension::cbChangementDeValeur));
-
+	// Connection sur la méthode cbChangementDeValeur.
+	listeDim.signal_changed().connect(sigc::mem_fun(*this, &Dimension::cbChangementDeValeur));
 }
 
 /************
@@ -54,7 +51,7 @@ listeDim.signal_changed().connect(sigc::mem_fun(*this, &Dimension::cbChangementD
 
 const Vue& 
 Dimension::lireVue() const {
-return *ptrVue;
+	return *ptrVue;
 }
 
 /***********
@@ -63,10 +60,11 @@ return *ptrVue;
 
 int 
 Dimension::valeur() const {
-Glib::ustring text = listeDim.get_active_text();
-int value;
-std::stringstream(text) >> value;
-return value;
+
+	Glib::ustring text = listeDim.get_active_text();
+	int value;
+	std::stringstream(text) >> value;
+	return value;
 }
 
 /*************************
@@ -76,11 +74,11 @@ return value;
 void 
 Dimension::cbChangementDeValeur() {
 
-// Effacement de ce controle pour pouvoir etre reaffichee par sa vue
-// proprietaire tout a l'heure.
-hide();
+	// Effacement de ce controle pour pouvoir etre reaffichee par sa vue
+	// proprietaire tout a l'heure.
+	hide();
 
-// Changement de modele.
-ptrVue->cbChangerModele();
+	// Changement de modele.
+	ptrVue->cbChangerModele();
 
 }

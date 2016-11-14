@@ -4,7 +4,7 @@
 #include <gtkmm/frame.h>
 #include <gtkmm/progressbar.h>
 
-namespace grenouille {
+namespace grenouilloland {
 
 /**
 * Declarations incompletes necessaires.
@@ -15,7 +15,7 @@ class Vue;
 * @class Chronometre Chronometre.hpp
 * @brief Afficheur du temps de Jeu.
 
-* Declaration de la classe Chronometre representant le chrono du jeu. 
+* Declaration de la classe Chronometre representant le chrono du jeu.
 * Le Widget de type barre de progression.
 * @author Marechal Charlie
 * @author Fontaine Luc

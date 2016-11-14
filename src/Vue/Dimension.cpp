@@ -5,16 +5,16 @@
 #include "Presentateur.hpp"
 #include "Dimension.hpp"
 
-using namespace grenouilloland;
+using namespace grenouille;
 
 /**************
 * Dimension. *
 **************/
 
-Dimension::Dimension(const Glib::ustring& titre, Vue& vue):
+Dimension::Dimension(const Glib::ustring& titre, VueGrenouille& vue):
 Gtk::Frame(titre),
 ptrVue(&vue),
-listeDimension(false)
+listeDim(false)
 {
 
 // Obtention du presentateur.
@@ -22,29 +22,29 @@ const Presentateur& presentateur = vue.lirePresentateur();
 
 // Récupération des valeurs minimale, maximale et initiale de la dimension
 // du jeu.
-const int minimum = presentateur.lireDimensionMinimum();
-const int maximum = presentateur.lireDimensionMaximum();
-const int initiale = presentateur.dimension();
+const int min = presentateur.lireDimensionMinimum();
+const int max = presentateur.lireDimensionMaximum();
+const int init = presentateur.dimension();
 
-std::ostringstream convert;
+std::ostringstream conversion;
 
 // Création des champs du menu déroulant.  	
-for(int i = minimum; i <= maximum; i++) {
-convert << i;
-_listeDimension.append(convert.str());
-convert.str("");
+for(int i = min; i <= max; i++) {
+conversion << i;
+listeDim.append(conversion.str());
+conversion.str("");
 }
 
-convert << initiale;
+conversion << init;
 
 // Dimension initiale en champs sélectionné.
-_listeDimension.set_active_text(convert.str());
+listeDim.set_active_text(conversion.str());
 
-add(_listeDimension);
+add(listeDim);
 
 // Connection de l'évènement changement de champs sélectionné sur 
 // la méthode cbChangementDeValeur.
-_listeDimension.signal_changed().connect(sigc::mem_fun(*this, &Dimension::cbChangementDeValeur));
+listeDim.signal_changed().connect(sigc::mem_fun(*this, &Dimension::cbChangementDeValeur));
 
 }
 
@@ -54,7 +54,7 @@ _listeDimension.signal_changed().connect(sigc::mem_fun(*this, &Dimension::cbChan
 
 const Vue& 
 Dimension::lireVue() const {
-return *_ptrVue;
+return *ptrVue;
 }
 
 /***********
@@ -63,7 +63,7 @@ return *_ptrVue;
 
 int 
 Dimension::valeur() const {
-Glib::ustring text = _listeDimension.get_active_text();
+Glib::ustring text = listeDim.get_active_text();
 int value;
 std::stringstream(text) >> value;
 return value;
@@ -81,6 +81,6 @@ Dimension::cbChangementDeValeur() {
 hide();
 
 // Changement de modele.
-_ptrVue->cbChangerModele();
+ptrVue->cbChangerModele();
 
 }

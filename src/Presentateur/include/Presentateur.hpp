@@ -1,151 +1,210 @@
 #ifndef Presentateur_hpp
 #define Presentateur_hpp
 
-#include "JeuDeLaVie.hpp"
+#include "Jeu.hpp"
 #include "Vue.hpp"
+
+namespace grenouilloland {
 
 /**
  * @class Presentateur Presentateur.hpp
+ * @brief Presentateur de grenouilloland.
+ * @author Luc FONTAINE
+ * @author Choukri SOULEIMAN IMAN
+ * @author Charlie MARECHAL
+ * @author Xiaoge YAN
  *
- * Déclaration de la classe Presentateur représentant le présentateur dans le
- * modèle d'architecture graphique MVP.
+ * Declaration de la classe Presentateur (Modele MVP)
  *
- * @note Une instance de cette classe ne peut être dupliquée implicitement.
+ * @note une instance de cette classe ne peut etre dupliquee.
  */
 class Presentateur {
+
 public:
 
   /**
    * Constructeur logique.
    *
-   * @param[in] dimensionMinimum - la valeur de @ref dimensionMinimum_.
-   * @param[in] dimensionMaximum - la valeur de @ref dimensionMaximum_.
-   * @param[in] dimension - la résolution initiale.
+   * @param[in] dimMin - la valeur de @ref _dimMin.
+   * @param[in] dimMax - la valeur de @ref _dimMax.
+   * @param[in] dimension - la resolution initiale.
    */
-  Presentateur(const int& dimensionMinimum, 
-	       const int& dimensionMaximum,
+  Presentateur(const int& dimMin, 
+	       const int& dimMax,
 	       const int& resolution);
-
-  /**
-   * Constructeur par recopie.
-   *
-   * @param[in] autre - l'instance à recopier.
-   */
-  Presentateur(const Presentateur& autre) = delete;
 
 public:
 
   /**
+   * Retourne la dimension du modele associe a ce presentateur.
+   *
+   * @return la dimension du modele associe a ce presentateur.
+   */
+  const int& dimension() const;
+  
+  /**
    * Accesseur.
    *
-   * @return la valeur de @ref dimensionMinimum_.
+   * @return la valeur de @ref _dimMin.
    */
-  const int& lireDimensionMinimum() const;
+  const int& lireDimMin() const;
 
   /**
    * Accesseur.
    *
-   * @return la valeur de @ref dimensionMaximum_.
+   * @return la valeur de @ref _dimMax.
    */
-  const int& lireDimensionMaximum() const;
+  const int& lireDimMax() const;
 
   /**
    * Accesseur.
    *
-   * @return la valeur pointée par @ref ptrModele_.
+   * @return la valeur de @ref _ptrModele.
    */
-  const JeuDeLaVie& lireModele() const;
+  const Jeu& lireModele() const;
 
   /**
    * Accesseur.
    *
-   * @return la valeur pointée par @ref ptrVue_.
+   * @return la valeur de @ref _ptrVue.
    */
   const Vue& lireVue() const;
 
+  
+
 public:
-
   /**
-   * Retourne la dimension du modèle associé à ce presentateur.
-   *
-   * @return la dimension du modèle associé à ce présentateur.
-   */
-  const int& dimension() const;
-
-  /**
-   * Démarre ce presentateur.
+   * Lance ce presentateur.
    */
   void demarrer();
 
+protected:
+  
   /**
-   * Indique si la cellule du modèle dont les numéros de ligne et de colonne
-   * sont fournis en arguments, est vivante.
+   * Lance une nouvelle partie du Jeu.
+   */
+  void lancerPartie();
+
+  /**
+   * Change le modele associe a ce presentateur.
    *
-   * @param[in] ligne - le numéro de ligne.
-   * @param[in] colonne - le numéro de colonne.
-   * @return @c true si la cellule du modèle correspondante est vivante sinon
-   *   @c false.
-   */
-  bool estVivante(const int& ligne, const int& colonne) const;
-
-  /**
-   * Fait basculer l'état de la cellule du modèle dont les numéros de ligne et
-   * de colonnes sont fournis en arguments.
-   *
-   * @param[in] ligne - le numéro de ligne.
-   * @param[in] colonne - le numéro de colonne.
-   */
-  void basculer(const int& ligne, const int& colonne);
-
-  /**
-   * Calcule la génération de cellules suivante.
-   */
-  void suivante();
-
-  /**
-   * Réinitialise toutes les cellules du modèle avec des cellules mortes.
-   */
-  void reinitialiser();
-
-  /**
-   * Change le modèle associé à ce presentateur.
-   *
-   * @param[in] dimension - la dimension souhaitée.
+   * @param[in] dimension - la dimension souhaitee.
    */
   void nouveauModele(const int& dimension);
 
-public:
+  /**
+   * Déplace la grenouille dans le Jeu.
+   *
+   * @param[in] ligne - la ligne souhaitee.
+   * @param[in] colonne - la colonne souhaitee.
+   */
+  bool deplacerGrenouille(const int& ligne, const int& colonne);
 
   /**
-   * Opérateur d'affectation.
+   * Lance le vieillissement des éléments du Jeu.
+   */
+  bool vieillissement();
+
+private:
+  /**
+   * Constructeur par recopie.
+   *
+   * @param[in] autre - l'instance a recopier.
+   */
+  Presentateur(const Presentateur& autre) = delete;
+
+  /**
+   * Operateur d'affectation.
    *
    * @param[in] autre - l'instance à recopier.
-   * @return cette instance après recopie.
+   * @return cette instance apres recopie.
    */
   Presentateur& operator=(const Presentateur& autre) = delete;
 
 protected:
 
   /**
-   * Dimension minimum du modèle.
+   * Dimension minimum du modele.
    */
-  const int dimensionMinimum_;
+  const int _dimMin;
 
   /**
-   * Dimension maximum du modèle.
+   * Dimension maximum du modele.
    */
-  const int dimensionMaximum_;
+  const int _dimMax;
 
   /**
-   * Modèle associé à ce presentateur.
+   * Modele associe a ce presentateur.
    */
-  std::unique_ptr< JeuDeLaVie > ptrModele_;
+  std::unique_ptr< Jeu > _ptrModele;
 
   /**
-   * Vue associée à ce présentateur.
+   * Vue associee a ce presentateur.
    */
-  std::unique_ptr< Vue > ptrVue_;
+  std::unique_ptr< Vue > _ptrVue;
+  
+  /**
+   * Connecteur de slot à un évènement.
+   */
+  sigc::connection _conn;
+  
+  /**
+   * Slot qui sera attaché à la méthode vieillissement.
+   */
+  const sigc::slot<bool> _vieillissement;
+  
+public:
+	
+	/**
+	 * @class DeleguationVue
+	 * @brief DeleguationVue du Presentateur du Jeu Grenouilloland.
+	 *
+	 * Declaration de la classe DeleguationVue de la classe Presentateur
+	 * communiquant avec la classe Vue amie.
+	 */
+	class DeleguationVue
+	{
+		
+		public :
+
+			friend class Vue;		
+
+		private :
+
+			static void lancerPartie(Presentateur& presentateur)
+			{
+				presentateur.lancerPartie();
+			}
+
+			static void nouveauModele(Presentateur& presentateur, const int& dimension)
+			{
+				presentateur.nouveauModele(dimension);
+			}
+	};
+
+	/**
+	 * @class DeleguationCaseGraphique
+	 * @brief DeleguationCaseGraphique du Presentateur du Jeu Grenouilloland.
+	 *
+	 * Declaration de la classe DeleguationCaseGraphique de la classe Presentateur
+	 * communiquant avec la classe CaseGraphique amie.
+	 */
+	class DeleguationCaseGraphique
+	{
+		
+		public :
+
+			friend class CaseGraphique;		
+
+		private :
+
+			static bool deplacerGrenouille(Presentateur& presentateur, const int& ligne, const int& colonne)
+			{
+				return presentateur.deplacerGrenouille(ligne, colonne);
+			}
+	};
 
 };
+}
 
 #endif

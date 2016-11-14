@@ -1,0 +1,12 @@
+#ifndef __T_GEST_STRAT_HPP_
+#define __T_GEST_STRAT_HPP_
+
+template <class T> class GestStrat
+{
+	public :
+		static const T& strategie;
+};
+
+template <class T> const T& GestStrat<T>::strategie = T::Mandataire::Strategie();
+
+#endif

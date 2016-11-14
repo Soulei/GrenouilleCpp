@@ -1,0 +1,13 @@
+#ifndef __STRATEGIE_ABSTRAITE_HH_
+#define __STRATEGIE_ABSTRAITE_HH_
+
+#include "Grenouille.hh"
+
+class StrategieAbstraite
+{
+	public :
+		void appliquerStrategie(Grenouille& g) const;
+		virtual void appliquerEffet(unsigned int& pv, bool& malade) const = 0;
+};
+
+#endif

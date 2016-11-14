@@ -1,0 +1,67 @@
+#ifndef __STRATEGIE_DOPANTE_HH_
+#define __STRATEGIE_DOPANTE_HH_
+
+#include "StrategieAbstraite.hh"
+
+namespace grenouilloland {
+
+/**
+ * @class StrategieDopante StrategieDopante.hh
+ * @brief StrategieDopante du Jeu Grenouilloland.
+ * @author Beudin.Alexandre Dauxais.Yann
+ * @date 05.01.2012
+ *
+ * Declaration de la classe StrategieDopante réprésentant la stratégie dopante d'un nénuphar du jeu Grenouilloland.
+ */
+class StrategieDopante : public StrategieAbstraite
+{
+	public :
+		/**
+		 * Application des effets de la stratégie.
+		 *
+		 * @param[in,out] pv - pv à modifier.
+		 * @param[in,out] malade - état de santé à modifier.
+		 */
+		void appliquerEffet(unsigned int& pv, bool& malade) const;
+		
+	private :
+		/**
+		 * Constructeur par défaut d'une stratégie dopante.
+		 */
+		StrategieDopante();
+		
+		/**
+		 * Constructeur par recopie d'une stratégie dopante.
+		 *
+		 * @note Celui-ci a été rendu inaccessible et n'est pas utilisé mais sa suppression entraînait une erreur.
+		 */
+		StrategieDopante(const StrategieDopante& autre);
+		
+	public :
+		/**
+		 * @class Mandataire
+		 * @brief Mandataire de StrategieDopante du Jeu Grenouilloland.
+		 *
+		 * Declaration de la classe Mandataire de la classe StrategieDopante communiquant avec la classe GestStrat<StrategieDopante>.
+		 */		
+		class Mandataire {
+			public :
+				friend class GestStrat<StrategieDopante>;
+			
+			
+			private :
+				/**
+				 * Retourne une instance de StrategieDopante.
+				 *
+				 * @return instance de StrategieDopante.
+				 */	
+				static StrategieDopante Strategie()
+				{
+					return StrategieDopante();
+				}
+		};
+};
+
+}
+
+#endif

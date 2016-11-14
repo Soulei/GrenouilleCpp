@@ -1,0 +1,28 @@
+#ifndef __STRATEGIE_VENENEUSE_HH_
+#define __STRATEGIE_VENENEUSE_HH_
+
+#include "StrategieAbstraite.hh"
+
+class StrategieVeneneuse : public StrategieAbstraite
+{
+	public :
+		void appliquerEffet(unsigned int& pv, bool& malade) const;
+		
+	private :
+		StrategieVeneneuse();
+		
+	public :
+	
+		class Mandataire {
+			/*public :
+				friend class GestStrat<StrategieVeneneuse>;
+			*/
+			private :	
+				static StrategieVeneneuse Strategie()
+				{
+					return StrategieVeneneuse();
+				}
+		};
+};
+
+#endif

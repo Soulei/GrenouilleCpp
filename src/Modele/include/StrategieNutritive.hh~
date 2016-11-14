@@ -1,0 +1,28 @@
+#ifndef __STRATEGIE_NUTRITIVE_HH_
+#define __STRATEGIE_NUTRITIVE_HH_
+
+#include "StrategieAbstraite.hh"
+
+class StrategieNutritive : public StrategieAbstraite
+{
+	public :
+		void appliquerEffet(unsigned int& pv, bool& malade) const;
+		
+	private :
+		StrategieNutritive();
+		
+	public :
+	
+		class Mandataire {
+			/*public :
+				friend class GestStrat<StrategieNutritive>;
+			*/
+			private :	
+				static StrategieNutritive Strategie()
+				{
+					return StrategieNutritive();
+				}
+		};
+};
+
+#endif

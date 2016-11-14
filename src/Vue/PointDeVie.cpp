@@ -26,7 +26,7 @@ PointDeVie::PointDeVie(const Glib::ustring& titre):
 }
 
 /*
-* mettreAJour. 
+* mettreAJour.
 */
 
 void
@@ -44,7 +44,7 @@ PointDeVie::mettreAJour(const Presentateur& presentateur) {
 
 	// Mise à jour de l'image du coeur.
 	if(presentateur.lireModele().grenouilleMalade())
-		imageCoeur.set(Vue::cheminImages + "coeur_malade-96x96.png");
+		imageCoeur.set(VueGrenouille::cheminImages + "coeur_malade-96x96.png");
 	else
-		imageCoeur.set(Vue::cheminImages + "coeur-96x96.png");
+		imageCoeur.set(VueGrenouille::cheminImages + "coeur-96x96.png");
 }

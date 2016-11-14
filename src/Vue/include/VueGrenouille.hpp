@@ -2,9 +2,9 @@
 #define Vue_hpp
 
 #include "GrenouilleGraphique.hpp"
-#include "Chronometre.hh"
-#include "Dimension.hh"
-#include "PointDeVie.hh"
+#include "Chronometre.hpp"
+#include "Dimension.hpp"
+#include "PointDeVie.hpp"
 #include <gtkmm/main.h>
 #include <gtkmm/window.h>
 #include <gtkmm/box.h>
@@ -26,7 +26,7 @@
 
 	/**
 	* @class VueGrenouille VueGrenouille.hpp
-	* @brief Vue de l'application.
+	* @brief VueGrenouille de l'application.
 	* @author Marechal Charlie
 	* @author Fontaine Luc
 	* @author Souleiman Choukri
@@ -34,7 +34,7 @@
 	* Declaration de la classe VueGrenouille representant la vue du jeu grenouilloland, son interface graphique
 	*
 	*/
-	class Vue: public Gtk::Window {
+	class VueGrenouille: public Gtk::Window {
 	public:
 
 	/**
@@ -100,7 +100,7 @@
 	* Constructeur logique.
 	* @param[in] presentateur - la valeur de @ref _ptrPresentateur.
 	*/
-	Vue(Presentateur& presentateur);
+	VueGrenouille(Presentateur& presentateur);
 
 	protected:
 
@@ -304,7 +304,7 @@
 
 		private :
 
-			static void mettreAJour(Vue& vue)
+			static void mettreAJour(VueGrenouille& vue)
 			{
 				vue.mettreAJour();
 			}

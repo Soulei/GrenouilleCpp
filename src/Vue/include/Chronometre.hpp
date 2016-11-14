@@ -9,7 +9,7 @@ namespace grenouilloland {
 /**
 * Declarations incompletes necessaires.
 */
-class Vue;
+class VueGrenouille;
 
 /**
 * @class Chronometre Chronometre.hpp
@@ -28,7 +28,7 @@ class Chronometre: public Gtk::Frame {
 /**
 * Declaration d'amitie.
 */
-friend class Vue;
+friend class VueGrenouille;
 
 public:
 

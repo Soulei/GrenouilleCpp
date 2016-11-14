@@ -8,7 +8,7 @@
 #include <gtkmm.h>
 
 #include "Grenouille.hpp"
-#include "Case.hpp"
+#include "Cellule.hpp"
 
 #include "Eau.hpp"
 #include "NenupharImmortel.hpp"
@@ -27,7 +27,7 @@ namespace grenouilloland {
  * Declaration de la classe Jeu réprésentant le plateau du jeu Grenouilloland.
  */
 class Jeu
-{		
+{
 	public :
 		/**
 		 * Constructeur logique du jeu.
@@ -35,54 +35,54 @@ class Jeu
 		 * @param[in] n - taille du plateau de dimension n*n.
 		 */
 		Jeu(const int& n);
-		
+
 	public:
-		
+
 		/**
 		 * Accesseur de la dimension du plateau.
 		 *
 		 * @return la valeur de @ref _n.
 		 */
 		const int& lireDimension() const;
-		
+
 		/**
 		 * Accesseur du compteur.
 		 *
 		 * @return la valeur de @ref _compteur.
 		 */
 		const unsigned int& lireCompteur() const;
-		
+
 		/**
-		 * Accesseur d'une case du plateau.
+		 * Accesseur d'une Cellule du plateau.
 		 *
-		 * @param[in] ligne - ligne de la case du plateau.
-		 * @param[in] colonne - colonne de la case du plateau.
+		 * @param[in] ligne - ligne de la Cellule du plateau.
+		 * @param[in] colonne - colonne de la Cellule du plateau.
 		 *
-		 * @return référence constante sur une case du plateau.
+		 * @return référence constante sur une Cellule du plateau.
 		 */
-		const Case& lireCase(const int& ligne, const int& colonne) const;
-		
+		const Cellule& lireCellule(const int& ligne, const int& colonne) const;
+
 		/**
 		 * Accesseur du nombre de pv de la grenouille.
 		 *
 		 * @return nombre de pv de la grenouille.
 		 */
 		const unsigned int& lirePvGrenouille() const;
-		
+
 		/**
 		 * Accesseur de l'état de santé de la grenouille.
 		 *
 		 * @return la valeur de l'état de santé de la grenouille.
 		 */
 		bool grenouilleMalade() const;
-		
+
 		/**
-		 * Test de la présence de la grenouille sur une case du plateau.
+		 * Test de la présence de la grenouille sur une Cellule du plateau.
 		 *
-		 * @return true si la grenouille est présente sur la case.
+		 * @return true si la grenouille est présente sur la Cellule.
 		 */
 		bool presenceGrenouille(const unsigned int& ligne, const unsigned int& colonne) const;
-		
+
 		/**
 		 * Accesseur de l'état de fin du jeu.
 		 *
@@ -103,12 +103,12 @@ class Jeu
 		 * Réinitialisation du plateau de jeu.
 		 */
 		void reinitialiser();
-		
+
 		/**
 		 * Lancement de la partie.
 		 */
 		void lancerPartie();
-		
+
 		/**
 		 * Déplacement de la grenouille.
 		 *
@@ -120,17 +120,17 @@ class Jeu
 		bool deplacerGrenouille(const int& x, const int& y);
 
 		/**
-		 * Création de chemins entre la grenouille et la case d'arrivée.
+		 * Création de chemins entre la grenouille et la Cellule d'arrivée.
 		 */
 		void creerChemin();
-		
+
 		/**
 		 * Vérification de l'état de la grenouille.
 		 *
 		 * @return true si la grenouille est en vie, false sinon.
 		 */
 		bool verifEtat();
-		
+
 		/**
 		 * Calcul du vieillissement des éléments du plateau.
 		 *
@@ -143,41 +143,41 @@ class Jeu
 		 * La grenouille appartenant au jeu.
 		 */
 		Grenouille _grenouille;
-		
+
 		/**
-		 * Ensemble des cases composant le plateau du jeu.
+		 * Ensemble des Cellules composant le plateau du jeu.
 		 */
-		std::vector<Case> _plateau;
-		
+		std::vector<Cellule> _plateau;
+
 		/**
 		 * Dimension du plateau de jeu.
 		 */
 		int _n;
-		
+
 		/**
 		 * Etat de la fin de partie.
 		 */
 		bool _end;
-		
+
 		/**
 		 * Compteur du jeu.
 		 */
 		unsigned int _compteur;
 
 	public:
-		
+
 		/**
-		 * @class Deleguation
-		 * @brief Deleguation du Jeu.
+		 * @class Delegation
+		 * @brief Delegation du Jeu.
 		 *
-		 * Declaration de la classe Deleguation de la classe Jeu communiquant avec
+		 * Declaration de la classe Delegation de la classe Jeu communiquant avec
 		 * le Presentateur ami.
-		 */		
-		class Deleguation
+		 */
+		class Delegation
 		{
-		
+
 		public :
-			friend class Presentateur;			
+			friend class Presentateur;
 
 		private :
 

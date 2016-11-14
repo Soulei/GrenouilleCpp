@@ -3,7 +3,7 @@
 #include "StrategieDopante.hpp"
 using namespace grenouilloland;
 
-Element::Element(const StrategieAbstraite& strategie) : _etat(Etat::Grand), _strategie(&strategie) 
+Element::Element(const StrategieAbstraite& strategie) : _etat(Etat::Grand), _strategie(&strategie)
 {
 }
 

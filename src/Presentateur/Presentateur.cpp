@@ -3,7 +3,7 @@
  *****************************************/
 
 #include "Presentateur.hpp"
-#include "Case.hpp"
+#include "Cellule.hpp"
 
 using namespace grenouilloland;
 
@@ -11,13 +11,13 @@ using namespace grenouilloland;
  * Presentateur. *
  *****************/
 
-Presentateur::Presentateur(const int& dimMin, 
+Presentateur::Presentateur(const int& dimMin,
 	const int& dimMax,
 	const int& dimension):
 	_dimMin(dimMin),
 	_dimMax(dimMax),
 	_ptrModele(new Jeu(dimension)),
-	_ptrVue(new Vue(*this)),
+	_ptrVue(new VueGrenouille(*this)),
 	_vieillissement(sigc::mem_fun(*this, &Presentateur::vieillissement))
 {
 }
@@ -26,7 +26,7 @@ Presentateur::Presentateur(const int& dimMin,
  * dimension. *
  **************/
 
-const int& 
+const int&
 Presentateur::dimension() const {
   return _ptrModele->lireDimension();
 }
@@ -35,7 +35,7 @@ Presentateur::dimension() const {
  * lireDimMin. *
  *************************/
 
-const int& 
+const int&
 Presentateur::lireDimMin() const {
   return _dimMin;
 }
@@ -44,7 +44,7 @@ Presentateur::lireDimMin() const {
  * lireDimMax. *
  *************************/
 
-const int& 
+const int&
 Presentateur::lireDimMax() const {
   return _dimMax;
 }
@@ -53,7 +53,7 @@ Presentateur::lireDimMax() const {
  * lireModele. *
  ***************/
 
-const Jeu& 
+const Jeu&
 Presentateur::lireModele() const {
   return *_ptrModele;
 }
@@ -62,7 +62,7 @@ Presentateur::lireModele() const {
  * lireVue. *
  ************/
 
-const Vue& 
+const VueGrenouille&
 Presentateur::lireVue() const {
   return *_ptrVue;
 }
@@ -86,10 +86,10 @@ bool
 Presentateur::vieillissement() {
 
 	// Lance le vieillissement du Jeu.
-	bool ret = Jeu::Deleguation::vieillissement(*_ptrModele);
+	bool ret = Jeu::Delegation::vieillissement(*_ptrModele);
 
-	// Met la Vue à jour.
-	Vue::Deleguation::mettreAJour(*_ptrVue);
+	// Met la VueGrenouille à jour.
+	VueGrenouille::Delegation::mettreAJour(*_ptrVue);
 	return ret;
 }
 
@@ -104,21 +104,21 @@ Presentateur::lancerPartie() {
 	_conn.disconnect();
 
 	// Réinitialise le Jeu.
-	Jeu::Deleguation::reinitialiser(*_ptrModele);
+	Jeu::Delegation::reinitialiser(*_ptrModele);
 
 	if (_ptrModele->end()) {
 
 		// Démarre le Jeu.
-		Jeu::Deleguation::lancerPartie(*_ptrModele);
+		Jeu::Delegation::lancerPartie(*_ptrModele);
 
 		// Lance la création du premier chemin de nénuphars.
-		Jeu::Deleguation::creerChemin(*_ptrModele);
+		Jeu::Delegation::creerChemin(*_ptrModele);
 
-		// MAJ de la Vue.
-		Vue::Deleguation::mettreAJour(*_ptrVue);
-		
+		// MAJ de la VueGrenouille.
+		VueGrenouille::Delegation::mettreAJour(*_ptrVue);
+
 		// Connecte le connecteur au slot _vieillissement avec un timer d'une seconde.
-		// La méthode vieillissement sera ainsi lancé toutes les secondes. 
+		// La méthode vieillissement sera ainsi lancé toutes les secondes.
 		_conn = Glib::signal_timeout().connect(_vieillissement, 1000);
 	}
 }
@@ -129,10 +129,10 @@ Presentateur::lancerPartie() {
 
 bool
 Presentateur::deplacerGrenouille(const int& ligne, const int& colonne) {
-	if (Jeu::Deleguation::deplacerGrenouille(*_ptrModele, colonne, ligne)) {
+	if (Jeu::Delegation::deplacerGrenouille(*_ptrModele, colonne, ligne)) {
 
-		// MAJ de la Vue.
-		Vue::Deleguation::mettreAJour(*_ptrVue);
+		// MAJ de la VueGrenouille.
+		VueGrenouille::Delegation::mettreAJour(*_ptrVue);
 		return true;
 	}
 	return false;
@@ -142,7 +142,7 @@ Presentateur::deplacerGrenouille(const int& ligne, const int& colonne) {
  * nouveauModele. *
  ******************/
 
-void 
+void
 Presentateur::nouveauModele(const int& dimension) {
 	_ptrModele.reset(new Jeu(dimension));
 }

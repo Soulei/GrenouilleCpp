@@ -1,15 +1,15 @@
 /************************************
- * Definition de la classe Case. *
+ * Definition de la classe Cellule. *
  ************************************/
 
 #include "Jeu.hpp"
 using namespace grenouilloland;
 
 /************
- * Case. *
+ * Cellule. *
  ************/
 
-Case::Case(const int& colonne, const int& ligne):
+Cellule::Cellule(const int& colonne, const int& ligne):
   _ligne(ligne),
   _colonne(colonne),
   _element(new Eau()) {
@@ -19,8 +19,8 @@ Case::Case(const int& colonne, const int& ligne):
  * lireLigne. *
  **************/
 
-const int& 
-Case::lireLigne() const {
+const int&
+Cellule::lireLigne() const {
   return _ligne;
 }
 
@@ -28,8 +28,8 @@ Case::lireLigne() const {
  * lireColonne. *
  ****************/
 
-const int& 
-Case::lireColonne() const {
+const int&
+Cellule::lireColonne() const {
   return _colonne;
 }
 
@@ -38,7 +38,7 @@ Case::lireColonne() const {
  ****************/
 
 const Element&
-Case::lireElement() const {
+Cellule::lireElement() const {
 	return *_element;
 }
 
@@ -47,7 +47,7 @@ Case::lireElement() const {
  ****************/
 
 void
-Case::changerElement(Element* element) {
+Cellule::changerElement(Element* element) {
 	_element.reset(element);
 }
 
@@ -56,6 +56,6 @@ Case::changerElement(Element* element) {
  ****************/
 
 Etat
-Case::vieillirElement() {
-	return Element::Mandataire::vieillir(*_element);
+Cellule::vieillirElement() {
+	return Element::Delegation::vieillir(*_element);
 }

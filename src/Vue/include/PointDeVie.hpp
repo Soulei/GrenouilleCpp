@@ -19,7 +19,7 @@
 	*(Attention)
 	*Declaration d'amitié.
 	*/
-	friend class Vue;
+	friend class VueGrenouille;
 
 	public:
 

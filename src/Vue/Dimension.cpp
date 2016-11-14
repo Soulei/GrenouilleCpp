@@ -27,7 +27,7 @@ listeDim(false)
 
 	std::ostringstream conversion;
 
-	// Création des champs du menu déroulant.  	
+	// Création des champs du menu déroulant.
 	for(int i = min; i <= max; i++) {
 		conversion << i;
 		listeDim.append(conversion.str());
@@ -36,7 +36,7 @@ listeDim(false)
 
 	conversion << init;
 
-	// Dimension initiale 
+	// Dimension initiale
 	listeDim.set_active_text(conversion.str());
 
 	add(listeDim);
@@ -49,7 +49,7 @@ listeDim(false)
 * lireVue. *
 ************/
 
-const Vue& 
+const VueGrenouille& 
 Dimension::lireVue() const {
 	return *ptrVue;
 }
@@ -58,7 +58,7 @@ Dimension::lireVue() const {
 * valeur. *
 ***********/
 
-int 
+int
 Dimension::valeur() const {
 
 	Glib::ustring text = listeDim.get_active_text();
@@ -71,7 +71,7 @@ Dimension::valeur() const {
 * cbChangementDeValeur. *
 *************************/
 
-void 
+void
 Dimension::cbChangementDeValeur() {
 
 	// Effacement de ce controle pour pouvoir etre reaffichee par sa vue

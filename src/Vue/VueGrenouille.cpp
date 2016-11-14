@@ -4,79 +4,79 @@
 
 #include "Presentateur.hpp"
 
-using namespace Grenouille;
+using namespace grenouilloland;
 
 /****************
 * initialiser. *
 ****************/
 
-void 
+void
 VueGrenouille::initialiser() {
 
 // Creations des pixbufs.
-images["Grenouille"] = 
+images["Grenouille"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "grenouille.gif");
 
-images["eau"] = 
+images["eau"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "eau-96x96.png");
 
-images["nen"] = 
+images["nen"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "nen-96x96.png");
-images["nen_moyen"] = 
+images["nen_moyen"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "nen_moyen-96x96.png");
-images["nen_petit"] = 
+images["nen_petit"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "nen_petit-96x96.png");
 
-images["nen_dopant"] = 
+images["nen_dopant"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "nen_dopant-96x96.png");
-images["nen_dopant_moyen"] = 
+images["nen_dopant_moyen"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "nen_dopant_moyen-96x96.png");
-images["nen_dopant_petit"] = 
+images["nen_dopant_petit"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "nen_dopant_petit-96x96.png");
 
-images["nen_nutritif"] = 
+images["nen_nutritif"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "nen_nutritif-96x96.png");
-images["nen_nutritif_moyen"] = 
+images["nen_nutritif_moyen"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "nen_nutritif_moyen-96x96.png");
-images["nen_nutritif_petit"] = 
+images["nen_nutritif_petit"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "nen_nutritif_petit-96x96.png");
 
-images["nen_veneneux"] = 
+images["nen_veneneux"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "nen_veneneux-96x96.png");
-images["nen_veneneux_moyen"] = 
+images["nen_veneneux_moyen"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "nen_veneneux_moyen-96x96.png");
-images["nen_veneneux_petit"] = 
+images["nen_veneneux_petit"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "nen_veneneux_petit-96x96.png");
 
-images["gren_eau"] = 
+images["gren_eau"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "gren_eau.png");
 
-images["gren_nen"] = 
+images["gren_nen"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "gren_nen-96x96.png");
-images["gren_nen_moyen"] = 
+images["gren_nen_moyen"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "gren_nen_moyen-96x96.png");
-images["gren_nen_petit"] = 
+images["gren_nen_petit"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "gren_nen_petit-96x96.png");
 
-images["gren_nen_dopant"] = 
+images["gren_nen_dopant"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "gren_nen_dopant-96x96.png");
-images["gren_nen_dopant_moyen"] = 
+images["gren_nen_dopant_moyen"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "gren_nen_dopant_moyen-96x96.png");
-images["gren_nen_dopant_petit"] = 
+images["gren_nen_dopant_petit"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "gren_nen_dopant_petit-96x96.png");
 
-images["gren_nen_nutritif"] = 
+images["gren_nen_nutritif"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "gren_nen_nutritif-96x96.png");
-images["gren_nen_nutritif_moyen"] = 
+images["gren_nen_nutritif_moyen"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "gren_nen_nutritif_moyen-96x96.png");
-images["gren_nen_nutritif_petit"] = 
+images["gren_nen_nutritif_petit"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "gren_nen_nutritif_petit-96x96.png");
 
-images["gren_nen_veneneux"] = 
+images["gren_nen_veneneux"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "gren_nen_veneneux-96x96.png");
-images["gren_nen_veneneux_moyen"] = 
+images["gren_nen_veneneux_moyen"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "gren_nen_veneneux_moyen-96x96.png");
-images["gren_nen_veneneux_petit"] = 
+images["gren_nen_veneneux_petit"] =
 Gdk::Pixbuf::create_from_file(cheminImages + "gren_nen_veneneux_petit-96x96.png");
 }
 
@@ -84,7 +84,7 @@ Gdk::Pixbuf::create_from_file(cheminImages + "gren_nen_veneneux_petit-96x96.png"
 * lireTitreVue. *
 *****************/
 
-const Glib::ustring 
+const Glib::ustring
 VueGrenouille::lireTitreVue() {
 return titreVue;
 }
@@ -93,7 +93,7 @@ return titreVue;
 * lireTitreGrenouille. *
 ************************/
 
-const Glib::ustring 
+const Glib::ustring
 VueGrenouille::lireTitreGrenouille() {
 return titreGrenouille;
 }
@@ -102,7 +102,7 @@ return titreGrenouille;
 * lireTitreChronometre. *
 ***********************/
 
-const Glib::ustring 
+const Glib::ustring
 VueGrenouille::lireTitreChronometre() {
 return titreChronometre;
 }
@@ -111,7 +111,7 @@ return titreChronometre;
 * lireTitreDimension. *
 ***********************/
 
-const Glib::ustring 
+const Glib::ustring
 VueGrenouille::lireTitreDimension() {
 return titreDimension;
 }
@@ -120,13 +120,13 @@ return titreDimension;
 * lireImage. *
 **************/
 
-const Glib::RefPtr< Gdk::Pixbuf>& 
+const Glib::RefPtr< Gdk::Pixbuf>&
 VueGrenouille::lireImage(const Glib::ustring& nom) {
 return images[nom];
 }
 
 /*****************
-* VueGrenouille. *  
+* VueGrenouille. *
 *****************/
 
 VueGrenouille::VueGrenouille(Presentateur& presentateur):
@@ -166,7 +166,7 @@ show_all_children();
 * lirePresentateur. *
 *********************/
 
-const Presentateur& 
+const Presentateur&
 VueGrenouille::lirePresentateur() const {
 return *ptrPresentateur;
 }
@@ -175,7 +175,7 @@ return *ptrPresentateur;
 * lirePresentateurModifiable. *
 *******************************/
 
-Presentateur& 
+Presentateur&
 VueGrenouille::lirePresentateurModifiable() {
 return *ptrPresentateur;
 }
@@ -224,46 +224,46 @@ VueGrenouille::construireBarreMenusEtOutils(Gtk::VBox& gestionnaire) {
 
 // Groupe d'actions.
 Glib::RefPtr< Gtk::ActionGroup > groupe = Gtk::ActionGroup::create();
-groupe->add(Gtk::Action::create("CommandesMenu", 
+groupe->add(Gtk::Action::create("CommandesMenu",
 			  "Commandes"));
 
 // Action "Suivante".
 {
-Glib::RefPtr< Gtk::Action > action = 
-Gtk::Action::create("CommandesPreparer", 
+Glib::RefPtr< Gtk::Action > action =
+Gtk::Action::create("CommandesPreparer",
 		  Gtk::Stock::EXECUTE,
 		  "Préparer",
 		  "Préparer une nouvelle partie.");
 auto crochet = sigc::mem_fun(*this, &VueGrenouille::cbChangerModele);
-groupe->add(action, crochet); 
+groupe->add(action, crochet);
 }
 
 // Action "Nouveau".
 {
-Glib::RefPtr< Gtk::Action > action = 
-Gtk::Action::create("CommandesNouveau", 
+Glib::RefPtr< Gtk::Action > action =
+Gtk::Action::create("CommandesNouveau",
 		  Gtk::Stock::NEW,
 		  "Nouvelle partie",
 		  "Lancer une nouvelle partie.");
 auto crochet = sigc::mem_fun(*this, &VueGrenouille::cbNouveau);
-groupe->add(action, crochet); 
+groupe->add(action, crochet);
 }
 
 // Action "A propos ...".
 {
-Glib::RefPtr< Gtk::Action > action = 
-Gtk::Action::create("CommandesAPropos", 
+Glib::RefPtr< Gtk::Action > action =
+Gtk::Action::create("CommandesAPropos",
 		  Gtk::Stock::ABOUT,
 		  "À propos ...",
 		  "Présenter l'application.");
 auto crochet = sigc::mem_fun(*this, &VueGrenouille::cbAPropos);
-groupe->add(action, crochet); 
+groupe->add(action, crochet);
 }
 
 // Action "Quitter".
 {
-Glib::RefPtr< Gtk::Action > action = 
-Gtk::Action::create("CommandesQuitter", 
+Glib::RefPtr< Gtk::Action > action =
+Gtk::Action::create("CommandesQuitter",
 		  Gtk::Stock::QUIT,
 		  "Quitter",
 		  "Quitter l'application.");
@@ -277,7 +277,7 @@ manager->insert_action_group(groupe);
 add_accel_group(manager->get_accel_group());
 
 // Structures XML des barres de menus et d'outils.
-const Glib::ustring structures = 
+const Glib::ustring structures =
 "<ui>"
 "  <menubar name='BarreMenus'>"
 "    <menu action='CommandesMenu'>"
@@ -328,7 +328,7 @@ gestionnaire.add(gestionnaireCentre);
 * construirePartieInferieure. *
 *******************************/
 
-void 
+void
 VueGrenouille::construirePartieInferieure(Gtk::VBox& gestionnaire) {
 
 gestionnaireBas.pack_start(dimension, Gtk::PACK_SHRINK);
@@ -341,7 +341,7 @@ gestionnaire.add(gestionnaireBas);
 * cbNouveau. *
 **************/
 
-void 
+void
 VueGrenouille::cbNouveau() {
 
 // Verrouillage.
@@ -372,7 +372,7 @@ Presentateur::DelegationVue::nouveauModele(*ptrPresentateur, dimension);
 // Suppression de l'ancienne representation graphique du jeu et remplacement
 // par une nouvelle adaptee a la nouvelle dimension.
 gestionnaireCentre.remove(*ptrGrenouilleGraphique);
-ptrGrenouilleGraphique.reset(new GrenouilleGraphique(titreGrenouille, 
+ptrGrenouilleGraphique.reset(new GrenouilleGraphique(titreGrenouille,
 						*this));
 gestionnaireCentre.pack_start(*ptrGrenouilleGraphique);
 
@@ -390,7 +390,7 @@ deverrouiller();
 * cbAPropos(). *
 ****************/
 
-void 
+void
 VueGrenouille::cbAPropos() {
 
 // Construction du dialogue.
@@ -415,7 +415,7 @@ apropos.hide();
 * cbQuitter. *
 **************/
 
-void 
+void
 VueGrenouille::cbQuitter() {
 
 // Verrouillage.

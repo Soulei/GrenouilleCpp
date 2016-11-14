@@ -14,14 +14,14 @@ namespace grenouilloland {
  * Declaration de la classe abstraite Element réprésentant la structure d'un élément du jeu Grenouilloland.
  */
 class Element
-{	
+{
 
 	public :
 		/**
 		 * Destructeur de l'élément.
 		 */
 		virtual ~Element() = 0;
-	
+
 		/**
 		 * Accesseur de l'ID identifiant le type de l'élément.
 		 *
@@ -42,7 +42,7 @@ class Element
 		 * @return valeur de @ref _etat.
 		 */
 		const Etat& lireEtat() const;
-		
+
 	protected :
 		/**
 		 * Constructeur logique instanciant un élément.
@@ -50,7 +50,7 @@ class Element
 		 * @param[in] strategie - stratégie appliqué par l'élément.
 		 */
 		Element(const StrategieAbstraite& strategie);
-		
+
 	private :
 		/**
 		 * Vieillissement de l'élément.
@@ -58,14 +58,14 @@ class Element
 		 * @return valeur de @ref _etat.
 		 */
 		virtual Etat vieillir();
-		
+
 		/**
 		 * Application de la stratégie de l'élément sur la grenouille.
 		 *
 		 * @param[in,out] g - grenouille subissant la stratégie de l'élément.
 		 */
 		void appliquerStrategie(Grenouille& g) const;
-		
+
 	protected :
 		/**
 		 * Etat de l'élément.
@@ -76,20 +76,20 @@ class Element
 		/**
 		 * Pointeur sur la stratégie appliquée par l'élément.
 		 */
-		const StrategieAbstraite* _strategie;		
+		const StrategieAbstraite* _strategie;
 
 	public :
 		/**
-		 * @class Deleguation Element.hpp
-		 * @brief Deleguation de la classe Element du Jeu Grenouilloland.
+		 * @class Delegation Element.hpp
+		 * @brief Delegation de la classe Element du Jeu Grenouilloland.
 		 *
-		 * Declaration et définition de la classe Deleguation de la classe Element communiquant avec les classes Jeu et Case.
+		 * Declaration et définition de la classe Delegation de la classe Element communiquant avec les classes Jeu et Cellule.
 		 */
-		class Deleguation
+		class Delegation
 		{
 			public :
 				friend class Jeu;
-				friend class Case;			
+				friend class Cellule;
 
 			private :
 				/**
@@ -103,7 +103,7 @@ class Element
 				{
 					return e.vieillir();
 				}
-				
+
 				/**
 				 * Application de la stratégie d'un élément sur une grenouille.
 				 *

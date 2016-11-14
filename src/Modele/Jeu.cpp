@@ -14,7 +14,7 @@ Jeu::Jeu(const int& n) : _grenouille(Grenouille(0,n-1)), _n(n), _end(true), _com
 
 		for (int i=0; i<(n*n); i++)
 		{
-			_plateau.push_back(Case(i%n,i/n));
+			_plateau.push_back(Cellule(i%n,i/n));
 		}
 		_plateau[n-1].changerElement(new NenupharImmortel());
 		_plateau[(n-1)*n].changerElement(new NenupharImmortel());
@@ -30,7 +30,7 @@ Jeu::reinitialiser()
 	{
 		_plateau[i].changerElement(new Eau());
 	}
-	
+
 	_plateau[_n-1].changerElement(new NenupharImmortel());
 	_plateau[(_n-1)*_n].changerElement(new NenupharImmortel());
 }
@@ -50,8 +50,8 @@ void Jeu::creerChemin()
 		int y = _grenouille.getY();
 
 		for (int i = x; i < _n; i++)
-		{			
-			if (_plateau[y*_n+i].lireElement().isEau()) 
+		{
+			if (_plateau[y*_n+i].lireElement().isEau())
 			{
 				_plateau[y*_n+i].changerElement(nenupharAleatoire());
 			}
@@ -91,27 +91,27 @@ bool Jeu::vieillissement()
 	if (!_end)
 	{
 		_compteur--;
-		
+
 		if (_compteur > 0 && (_grenouille.getX() != (_n-1) || _grenouille.getY() != 0))
 		{
 			bool morte = false;
 			for (int i = 0; i < (_n*_n); i++) _plateau[i].vieillirElement();
-			
+
 			creerChemin();
-			
+
 			for (int i = 0; i < (_n*_n); i++)
-			{		
+			{
 				if (_plateau[i].lireElement().lireEtat() == Etat::Mort)
 				{
 					_plateau[i].changerElement(new Eau());
-					
+
 					if ((_grenouille.getX() + (_grenouille.getY() * _n)) == i)
 					{
-						Element::Deleguation::appliquerStrategie(_plateau[i].lireElement(),_grenouille);
+						Element::Delegation::appliquerStrategie(_plateau[i].lireElement(),_grenouille);
 						if (verifEtat()) {
 							morte = true;
 						}
-					}					
+					}
 				}
 			}
 			if(morte)
@@ -124,7 +124,7 @@ bool Jeu::vieillissement()
 			return false;
 		}
 	}
-	
+
 	return false;
 }
 
@@ -134,13 +134,13 @@ bool Jeu::deplacerGrenouille(const int& x, const int& y)
 	{
 		int r_x = static_cast<int>(_grenouille.getX()) - x;
 		int r_y = static_cast<int>(_grenouille.getY()) - y;
-	
+
 		if (((r_x * r_x) == 1 && r_y == 0) || ((r_y * r_y) == 1 && r_x == 0))
 		{
 			Grenouille::DeleguationPosition::setX(_grenouille,x);
 			Grenouille::DeleguationPosition::setY(_grenouille,y);
 
-			Element::Deleguation::appliquerStrategie(_plateau[x+(_n*y)].lireElement(),_grenouille);
+			Element::Delegation::appliquerStrategie(_plateau[x+(_n*y)].lireElement(),_grenouille);
 			verifEtat();
 
 			return true;
@@ -159,8 +159,8 @@ Jeu::lireCompteur() const {
 	return _compteur;
 }
 
-const Case& 
-Jeu::lireCase(const int& ligne, const int& colonne) const {
+const Cellule&
+Jeu::lireCellule(const int& ligne, const int& colonne) const {
   	return _plateau[ligne * _n + colonne];
 }
 

@@ -9,7 +9,7 @@ namespace grenouilloland {
   /**
   * Declarations incompletes necessaires.
   */
-  class Vue;
+  class VueGrenouille;
 
   /**
   * @class Dimension Dimension.hpp
@@ -79,7 +79,7 @@ namespace grenouilloland {
   /**
   * Unique vue proprietaire de ce controleur.
   */
-  Vue* const ptrVue;
+  VueGrenouille* const ptrVue;
 
   /**
   * Menu déroulant.

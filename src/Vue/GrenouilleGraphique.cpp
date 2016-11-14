@@ -25,7 +25,7 @@ GrenouilleGraphique::GrenouilleGraphique(const Glib::ustring& titre, VueGrenouil
 
   	// Recuperation de dimension du modele.
   	const int& dim = modele.lireDimension();
-    
+
   	// Boucle de creation des cellules graphiques.
   	for (int i = 0; i < dim*dim; i ++) {
       	CelluleGraphique* c = Gtk::manage(new CelluleGraphique(*this, i%dim, i/dim));
@@ -38,7 +38,7 @@ GrenouilleGraphique::GrenouilleGraphique(const Glib::ustring& titre, VueGrenouil
  * lireVue. *
  ************/
 
-const Vue& 
+const VueGrenouille& 
 GrenouilleGraphique::lireVue() const {
   return *ptrVue;
 }
@@ -47,7 +47,7 @@ GrenouilleGraphique::lireVue() const {
  * lireVueModifiable. *
  **********************/
 
-Vue& 
+VueGrenouille&
 GrenouilleGraphique::lireVueModifiable() {
   return *ptrVue;
 }
@@ -56,7 +56,7 @@ GrenouilleGraphique::lireVueModifiable() {
  * mettreAJour. *
  ****************/
 
-void 
+void
 GrenouilleGraphique::mettreAJour(const Presentateur& presentateur) {
   for (CelluleGraphique* ptrCellule : cellules) {
     ptrCellule->mettreAJour(presentateur);

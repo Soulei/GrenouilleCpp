@@ -2,7 +2,7 @@
 #define Presentateur_hpp
 
 #include "Jeu.hpp"
-#include "Vue.hpp"
+#include "VueGrenouille.hpp"
 
 namespace grenouilloland {
 
@@ -29,7 +29,7 @@ public:
    * @param[in] dimMax - la valeur de @ref _dimMax.
    * @param[in] dimension - la resolution initiale.
    */
-  Presentateur(const int& dimMin, 
+  Presentateur(const int& dimMin,
 	       const int& dimMax,
 	       const int& resolution);
 
@@ -41,7 +41,7 @@ public:
    * @return la dimension du modele associe a ce presentateur.
    */
   const int& dimension() const;
-  
+
   /**
    * Accesseur.
    *
@@ -68,9 +68,9 @@ public:
    *
    * @return la valeur de @ref _ptrVue.
    */
-  const Vue& lireVue() const;
+  const VueGrenouille& lireVue() const;
 
-  
+
 
 public:
   /**
@@ -79,7 +79,7 @@ public:
   void demarrer();
 
 protected:
-  
+
   /**
    * Lance une nouvelle partie du Jeu.
    */
@@ -139,35 +139,35 @@ protected:
   std::unique_ptr< Jeu > _ptrModele;
 
   /**
-   * Vue associee a ce presentateur.
+   * VueGrenouille associee a ce presentateur.
    */
-  std::unique_ptr< Vue > _ptrVue;
-  
+  std::unique_ptr< VueGrenouille > _ptrVue;
+
   /**
    * Connecteur de slot à un évènement.
    */
   sigc::connection _conn;
-  
+
   /**
    * Slot qui sera attaché à la méthode vieillissement.
    */
   const sigc::slot<bool> _vieillissement;
-  
+
 public:
-	
+
 	/**
 	 * @class DeleguationVue
 	 * @brief DeleguationVue du Presentateur du Jeu Grenouilloland.
 	 *
 	 * Declaration de la classe DeleguationVue de la classe Presentateur
-	 * communiquant avec la classe Vue amie.
+	 * communiquant avec la classe VueGrenouille amie.
 	 */
 	class DeleguationVue
 	{
-		
+
 		public :
 
-			friend class Vue;		
+			friend class VueGrenouille;
 
 		private :
 
@@ -191,10 +191,10 @@ public:
 	 */
 	class DeleguationCaseGraphique
 	{
-		
+
 		public :
 
-			friend class CaseGraphique;		
+			friend class CaseGraphique;
 
 		private :
 

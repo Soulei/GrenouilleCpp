@@ -123,59 +123,32 @@ grenouilloland/fast:
 	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/build
 .PHONY : grenouilloland/fast
 
-src/Modele/Case.o: src/Modele/Case.cpp.o
+src/Modele/Cellule.o: src/Modele/Cellule.cpp.o
 
-.PHONY : src/Modele/Case.o
-
-# target to build an object file
-src/Modele/Case.cpp.o:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Case.cpp.o
-.PHONY : src/Modele/Case.cpp.o
-
-src/Modele/Case.i: src/Modele/Case.cpp.i
-
-.PHONY : src/Modele/Case.i
-
-# target to preprocess a source file
-src/Modele/Case.cpp.i:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Case.cpp.i
-.PHONY : src/Modele/Case.cpp.i
-
-src/Modele/Case.s: src/Modele/Case.cpp.s
-
-.PHONY : src/Modele/Case.s
-
-# target to generate assembly for a file
-src/Modele/Case.cpp.s:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Case.cpp.s
-.PHONY : src/Modele/Case.cpp.s
-
-src/Modele/Coordonnee.o: src/Modele/Coordonnee.cpp.o
-
-.PHONY : src/Modele/Coordonnee.o
+.PHONY : src/Modele/Cellule.o
 
 # target to build an object file
-src/Modele/Coordonnee.cpp.o:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Coordonnee.cpp.o
-.PHONY : src/Modele/Coordonnee.cpp.o
+src/Modele/Cellule.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Cellule.cpp.o
+.PHONY : src/Modele/Cellule.cpp.o
 
-src/Modele/Coordonnee.i: src/Modele/Coordonnee.cpp.i
+src/Modele/Cellule.i: src/Modele/Cellule.cpp.i
 
-.PHONY : src/Modele/Coordonnee.i
+.PHONY : src/Modele/Cellule.i
 
 # target to preprocess a source file
-src/Modele/Coordonnee.cpp.i:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Coordonnee.cpp.i
-.PHONY : src/Modele/Coordonnee.cpp.i
+src/Modele/Cellule.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Cellule.cpp.i
+.PHONY : src/Modele/Cellule.cpp.i
 
-src/Modele/Coordonnee.s: src/Modele/Coordonnee.cpp.s
+src/Modele/Cellule.s: src/Modele/Cellule.cpp.s
 
-.PHONY : src/Modele/Coordonnee.s
+.PHONY : src/Modele/Cellule.s
 
 # target to generate assembly for a file
-src/Modele/Coordonnee.cpp.s:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Coordonnee.cpp.s
-.PHONY : src/Modele/Coordonnee.cpp.s
+src/Modele/Cellule.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Cellule.cpp.s
+.PHONY : src/Modele/Cellule.cpp.s
 
 src/Modele/Eau.o: src/Modele/Eau.cpp.o
 
@@ -203,6 +176,87 @@ src/Modele/Eau.s: src/Modele/Eau.cpp.s
 src/Modele/Eau.cpp.s:
 	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Eau.cpp.s
 .PHONY : src/Modele/Eau.cpp.s
+
+src/Modele/Element.o: src/Modele/Element.cpp.o
+
+.PHONY : src/Modele/Element.o
+
+# target to build an object file
+src/Modele/Element.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Element.cpp.o
+.PHONY : src/Modele/Element.cpp.o
+
+src/Modele/Element.i: src/Modele/Element.cpp.i
+
+.PHONY : src/Modele/Element.i
+
+# target to preprocess a source file
+src/Modele/Element.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Element.cpp.i
+.PHONY : src/Modele/Element.cpp.i
+
+src/Modele/Element.s: src/Modele/Element.cpp.s
+
+.PHONY : src/Modele/Element.s
+
+# target to generate assembly for a file
+src/Modele/Element.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Element.cpp.s
+.PHONY : src/Modele/Element.cpp.s
+
+src/Modele/ElementMortel.o: src/Modele/ElementMortel.cpp.o
+
+.PHONY : src/Modele/ElementMortel.o
+
+# target to build an object file
+src/Modele/ElementMortel.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/ElementMortel.cpp.o
+.PHONY : src/Modele/ElementMortel.cpp.o
+
+src/Modele/ElementMortel.i: src/Modele/ElementMortel.cpp.i
+
+.PHONY : src/Modele/ElementMortel.i
+
+# target to preprocess a source file
+src/Modele/ElementMortel.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/ElementMortel.cpp.i
+.PHONY : src/Modele/ElementMortel.cpp.i
+
+src/Modele/ElementMortel.s: src/Modele/ElementMortel.cpp.s
+
+.PHONY : src/Modele/ElementMortel.s
+
+# target to generate assembly for a file
+src/Modele/ElementMortel.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/ElementMortel.cpp.s
+.PHONY : src/Modele/ElementMortel.cpp.s
+
+src/Modele/Etat.o: src/Modele/Etat.cpp.o
+
+.PHONY : src/Modele/Etat.o
+
+# target to build an object file
+src/Modele/Etat.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Etat.cpp.o
+.PHONY : src/Modele/Etat.cpp.o
+
+src/Modele/Etat.i: src/Modele/Etat.cpp.i
+
+.PHONY : src/Modele/Etat.i
+
+# target to preprocess a source file
+src/Modele/Etat.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Etat.cpp.i
+.PHONY : src/Modele/Etat.cpp.i
+
+src/Modele/Etat.s: src/Modele/Etat.cpp.s
+
+.PHONY : src/Modele/Etat.s
+
+# target to generate assembly for a file
+src/Modele/Etat.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Etat.cpp.s
+.PHONY : src/Modele/Etat.cpp.s
 
 src/Modele/Grenouille.o: src/Modele/Grenouille.cpp.o
 
@@ -258,194 +312,545 @@ src/Modele/Jeu.cpp.s:
 	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Jeu.cpp.s
 .PHONY : src/Modele/Jeu.cpp.s
 
-src/Modele/SNenuphardDopant.o: src/Modele/SNenuphardDopant.cpp.o
+src/Modele/Nenuphar.o: src/Modele/Nenuphar.cpp.o
 
-.PHONY : src/Modele/SNenuphardDopant.o
-
-# target to build an object file
-src/Modele/SNenuphardDopant.cpp.o:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardDopant.cpp.o
-.PHONY : src/Modele/SNenuphardDopant.cpp.o
-
-src/Modele/SNenuphardDopant.i: src/Modele/SNenuphardDopant.cpp.i
-
-.PHONY : src/Modele/SNenuphardDopant.i
-
-# target to preprocess a source file
-src/Modele/SNenuphardDopant.cpp.i:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardDopant.cpp.i
-.PHONY : src/Modele/SNenuphardDopant.cpp.i
-
-src/Modele/SNenuphardDopant.s: src/Modele/SNenuphardDopant.cpp.s
-
-.PHONY : src/Modele/SNenuphardDopant.s
-
-# target to generate assembly for a file
-src/Modele/SNenuphardDopant.cpp.s:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardDopant.cpp.s
-.PHONY : src/Modele/SNenuphardDopant.cpp.s
-
-src/Modele/SNenuphardImmortel.o: src/Modele/SNenuphardImmortel.cpp.o
-
-.PHONY : src/Modele/SNenuphardImmortel.o
+.PHONY : src/Modele/Nenuphar.o
 
 # target to build an object file
-src/Modele/SNenuphardImmortel.cpp.o:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardImmortel.cpp.o
-.PHONY : src/Modele/SNenuphardImmortel.cpp.o
+src/Modele/Nenuphar.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Nenuphar.cpp.o
+.PHONY : src/Modele/Nenuphar.cpp.o
 
-src/Modele/SNenuphardImmortel.i: src/Modele/SNenuphardImmortel.cpp.i
+src/Modele/Nenuphar.i: src/Modele/Nenuphar.cpp.i
 
-.PHONY : src/Modele/SNenuphardImmortel.i
+.PHONY : src/Modele/Nenuphar.i
 
 # target to preprocess a source file
-src/Modele/SNenuphardImmortel.cpp.i:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardImmortel.cpp.i
-.PHONY : src/Modele/SNenuphardImmortel.cpp.i
+src/Modele/Nenuphar.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Nenuphar.cpp.i
+.PHONY : src/Modele/Nenuphar.cpp.i
 
-src/Modele/SNenuphardImmortel.s: src/Modele/SNenuphardImmortel.cpp.s
+src/Modele/Nenuphar.s: src/Modele/Nenuphar.cpp.s
 
-.PHONY : src/Modele/SNenuphardImmortel.s
+.PHONY : src/Modele/Nenuphar.s
 
 # target to generate assembly for a file
-src/Modele/SNenuphardImmortel.cpp.s:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardImmortel.cpp.s
-.PHONY : src/Modele/SNenuphardImmortel.cpp.s
+src/Modele/Nenuphar.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/Nenuphar.cpp.s
+.PHONY : src/Modele/Nenuphar.cpp.s
 
-src/Modele/SNenuphardMortel.o: src/Modele/SNenuphardMortel.cpp.o
+src/Modele/NenupharDopant.o: src/Modele/NenupharDopant.cpp.o
 
-.PHONY : src/Modele/SNenuphardMortel.o
+.PHONY : src/Modele/NenupharDopant.o
 
 # target to build an object file
-src/Modele/SNenuphardMortel.cpp.o:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardMortel.cpp.o
-.PHONY : src/Modele/SNenuphardMortel.cpp.o
+src/Modele/NenupharDopant.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharDopant.cpp.o
+.PHONY : src/Modele/NenupharDopant.cpp.o
 
-src/Modele/SNenuphardMortel.i: src/Modele/SNenuphardMortel.cpp.i
+src/Modele/NenupharDopant.i: src/Modele/NenupharDopant.cpp.i
 
-.PHONY : src/Modele/SNenuphardMortel.i
+.PHONY : src/Modele/NenupharDopant.i
 
 # target to preprocess a source file
-src/Modele/SNenuphardMortel.cpp.i:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardMortel.cpp.i
-.PHONY : src/Modele/SNenuphardMortel.cpp.i
+src/Modele/NenupharDopant.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharDopant.cpp.i
+.PHONY : src/Modele/NenupharDopant.cpp.i
 
-src/Modele/SNenuphardMortel.s: src/Modele/SNenuphardMortel.cpp.s
+src/Modele/NenupharDopant.s: src/Modele/NenupharDopant.cpp.s
 
-.PHONY : src/Modele/SNenuphardMortel.s
+.PHONY : src/Modele/NenupharDopant.s
 
 # target to generate assembly for a file
-src/Modele/SNenuphardMortel.cpp.s:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardMortel.cpp.s
-.PHONY : src/Modele/SNenuphardMortel.cpp.s
+src/Modele/NenupharDopant.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharDopant.cpp.s
+.PHONY : src/Modele/NenupharDopant.cpp.s
 
-src/Modele/SNenuphardNormal.o: src/Modele/SNenuphardNormal.cpp.o
+src/Modele/NenupharImmortel.o: src/Modele/NenupharImmortel.cpp.o
 
-.PHONY : src/Modele/SNenuphardNormal.o
+.PHONY : src/Modele/NenupharImmortel.o
 
 # target to build an object file
-src/Modele/SNenuphardNormal.cpp.o:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardNormal.cpp.o
-.PHONY : src/Modele/SNenuphardNormal.cpp.o
+src/Modele/NenupharImmortel.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharImmortel.cpp.o
+.PHONY : src/Modele/NenupharImmortel.cpp.o
 
-src/Modele/SNenuphardNormal.i: src/Modele/SNenuphardNormal.cpp.i
+src/Modele/NenupharImmortel.i: src/Modele/NenupharImmortel.cpp.i
 
-.PHONY : src/Modele/SNenuphardNormal.i
+.PHONY : src/Modele/NenupharImmortel.i
 
 # target to preprocess a source file
-src/Modele/SNenuphardNormal.cpp.i:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardNormal.cpp.i
-.PHONY : src/Modele/SNenuphardNormal.cpp.i
+src/Modele/NenupharImmortel.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharImmortel.cpp.i
+.PHONY : src/Modele/NenupharImmortel.cpp.i
 
-src/Modele/SNenuphardNormal.s: src/Modele/SNenuphardNormal.cpp.s
+src/Modele/NenupharImmortel.s: src/Modele/NenupharImmortel.cpp.s
 
-.PHONY : src/Modele/SNenuphardNormal.s
+.PHONY : src/Modele/NenupharImmortel.s
 
 # target to generate assembly for a file
-src/Modele/SNenuphardNormal.cpp.s:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardNormal.cpp.s
-.PHONY : src/Modele/SNenuphardNormal.cpp.s
+src/Modele/NenupharImmortel.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharImmortel.cpp.s
+.PHONY : src/Modele/NenupharImmortel.cpp.s
 
-src/Modele/SNenuphardNutritif.o: src/Modele/SNenuphardNutritif.cpp.o
+src/Modele/NenupharMortel.o: src/Modele/NenupharMortel.cpp.o
 
-.PHONY : src/Modele/SNenuphardNutritif.o
+.PHONY : src/Modele/NenupharMortel.o
 
 # target to build an object file
-src/Modele/SNenuphardNutritif.cpp.o:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardNutritif.cpp.o
-.PHONY : src/Modele/SNenuphardNutritif.cpp.o
+src/Modele/NenupharMortel.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharMortel.cpp.o
+.PHONY : src/Modele/NenupharMortel.cpp.o
 
-src/Modele/SNenuphardNutritif.i: src/Modele/SNenuphardNutritif.cpp.i
+src/Modele/NenupharMortel.i: src/Modele/NenupharMortel.cpp.i
 
-.PHONY : src/Modele/SNenuphardNutritif.i
+.PHONY : src/Modele/NenupharMortel.i
 
 # target to preprocess a source file
-src/Modele/SNenuphardNutritif.cpp.i:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardNutritif.cpp.i
-.PHONY : src/Modele/SNenuphardNutritif.cpp.i
+src/Modele/NenupharMortel.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharMortel.cpp.i
+.PHONY : src/Modele/NenupharMortel.cpp.i
 
-src/Modele/SNenuphardNutritif.s: src/Modele/SNenuphardNutritif.cpp.s
+src/Modele/NenupharMortel.s: src/Modele/NenupharMortel.cpp.s
 
-.PHONY : src/Modele/SNenuphardNutritif.s
+.PHONY : src/Modele/NenupharMortel.s
 
 # target to generate assembly for a file
-src/Modele/SNenuphardNutritif.cpp.s:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardNutritif.cpp.s
-.PHONY : src/Modele/SNenuphardNutritif.cpp.s
+src/Modele/NenupharMortel.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharMortel.cpp.s
+.PHONY : src/Modele/NenupharMortel.cpp.s
 
-src/Modele/SNenuphardVeneneux.o: src/Modele/SNenuphardVeneneux.cpp.o
+src/Modele/NenupharNutritif.o: src/Modele/NenupharNutritif.cpp.o
 
-.PHONY : src/Modele/SNenuphardVeneneux.o
+.PHONY : src/Modele/NenupharNutritif.o
 
 # target to build an object file
-src/Modele/SNenuphardVeneneux.cpp.o:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardVeneneux.cpp.o
-.PHONY : src/Modele/SNenuphardVeneneux.cpp.o
+src/Modele/NenupharNutritif.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharNutritif.cpp.o
+.PHONY : src/Modele/NenupharNutritif.cpp.o
 
-src/Modele/SNenuphardVeneneux.i: src/Modele/SNenuphardVeneneux.cpp.i
+src/Modele/NenupharNutritif.i: src/Modele/NenupharNutritif.cpp.i
 
-.PHONY : src/Modele/SNenuphardVeneneux.i
+.PHONY : src/Modele/NenupharNutritif.i
 
 # target to preprocess a source file
-src/Modele/SNenuphardVeneneux.cpp.i:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardVeneneux.cpp.i
-.PHONY : src/Modele/SNenuphardVeneneux.cpp.i
+src/Modele/NenupharNutritif.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharNutritif.cpp.i
+.PHONY : src/Modele/NenupharNutritif.cpp.i
 
-src/Modele/SNenuphardVeneneux.s: src/Modele/SNenuphardVeneneux.cpp.s
+src/Modele/NenupharNutritif.s: src/Modele/NenupharNutritif.cpp.s
 
-.PHONY : src/Modele/SNenuphardVeneneux.s
+.PHONY : src/Modele/NenupharNutritif.s
 
 # target to generate assembly for a file
-src/Modele/SNenuphardVeneneux.cpp.s:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/SNenuphardVeneneux.cpp.s
-.PHONY : src/Modele/SNenuphardVeneneux.cpp.s
+src/Modele/NenupharNutritif.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharNutritif.cpp.s
+.PHONY : src/Modele/NenupharNutritif.cpp.s
 
-src/Modele/grenouilloland.o: src/Modele/grenouilloland.cpp.o
+src/Modele/NenupharVeneneux.o: src/Modele/NenupharVeneneux.cpp.o
 
-.PHONY : src/Modele/grenouilloland.o
+.PHONY : src/Modele/NenupharVeneneux.o
 
 # target to build an object file
-src/Modele/grenouilloland.cpp.o:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/grenouilloland.cpp.o
-.PHONY : src/Modele/grenouilloland.cpp.o
+src/Modele/NenupharVeneneux.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharVeneneux.cpp.o
+.PHONY : src/Modele/NenupharVeneneux.cpp.o
 
-src/Modele/grenouilloland.i: src/Modele/grenouilloland.cpp.i
+src/Modele/NenupharVeneneux.i: src/Modele/NenupharVeneneux.cpp.i
 
-.PHONY : src/Modele/grenouilloland.i
+.PHONY : src/Modele/NenupharVeneneux.i
 
 # target to preprocess a source file
-src/Modele/grenouilloland.cpp.i:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/grenouilloland.cpp.i
-.PHONY : src/Modele/grenouilloland.cpp.i
+src/Modele/NenupharVeneneux.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharVeneneux.cpp.i
+.PHONY : src/Modele/NenupharVeneneux.cpp.i
 
-src/Modele/grenouilloland.s: src/Modele/grenouilloland.cpp.s
+src/Modele/NenupharVeneneux.s: src/Modele/NenupharVeneneux.cpp.s
 
-.PHONY : src/Modele/grenouilloland.s
+.PHONY : src/Modele/NenupharVeneneux.s
 
 # target to generate assembly for a file
-src/Modele/grenouilloland.cpp.s:
-	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/grenouilloland.cpp.s
-.PHONY : src/Modele/grenouilloland.cpp.s
+src/Modele/NenupharVeneneux.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/NenupharVeneneux.cpp.s
+.PHONY : src/Modele/NenupharVeneneux.cpp.s
+
+src/Modele/StrategieAbstraite.o: src/Modele/StrategieAbstraite.cpp.o
+
+.PHONY : src/Modele/StrategieAbstraite.o
+
+# target to build an object file
+src/Modele/StrategieAbstraite.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieAbstraite.cpp.o
+.PHONY : src/Modele/StrategieAbstraite.cpp.o
+
+src/Modele/StrategieAbstraite.i: src/Modele/StrategieAbstraite.cpp.i
+
+.PHONY : src/Modele/StrategieAbstraite.i
+
+# target to preprocess a source file
+src/Modele/StrategieAbstraite.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieAbstraite.cpp.i
+.PHONY : src/Modele/StrategieAbstraite.cpp.i
+
+src/Modele/StrategieAbstraite.s: src/Modele/StrategieAbstraite.cpp.s
+
+.PHONY : src/Modele/StrategieAbstraite.s
+
+# target to generate assembly for a file
+src/Modele/StrategieAbstraite.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieAbstraite.cpp.s
+.PHONY : src/Modele/StrategieAbstraite.cpp.s
+
+src/Modele/StrategieDopante.o: src/Modele/StrategieDopante.cpp.o
+
+.PHONY : src/Modele/StrategieDopante.o
+
+# target to build an object file
+src/Modele/StrategieDopante.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieDopante.cpp.o
+.PHONY : src/Modele/StrategieDopante.cpp.o
+
+src/Modele/StrategieDopante.i: src/Modele/StrategieDopante.cpp.i
+
+.PHONY : src/Modele/StrategieDopante.i
+
+# target to preprocess a source file
+src/Modele/StrategieDopante.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieDopante.cpp.i
+.PHONY : src/Modele/StrategieDopante.cpp.i
+
+src/Modele/StrategieDopante.s: src/Modele/StrategieDopante.cpp.s
+
+.PHONY : src/Modele/StrategieDopante.s
+
+# target to generate assembly for a file
+src/Modele/StrategieDopante.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieDopante.cpp.s
+.PHONY : src/Modele/StrategieDopante.cpp.s
+
+src/Modele/StrategieMort.o: src/Modele/StrategieMort.cpp.o
+
+.PHONY : src/Modele/StrategieMort.o
+
+# target to build an object file
+src/Modele/StrategieMort.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieMort.cpp.o
+.PHONY : src/Modele/StrategieMort.cpp.o
+
+src/Modele/StrategieMort.i: src/Modele/StrategieMort.cpp.i
+
+.PHONY : src/Modele/StrategieMort.i
+
+# target to preprocess a source file
+src/Modele/StrategieMort.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieMort.cpp.i
+.PHONY : src/Modele/StrategieMort.cpp.i
+
+src/Modele/StrategieMort.s: src/Modele/StrategieMort.cpp.s
+
+.PHONY : src/Modele/StrategieMort.s
+
+# target to generate assembly for a file
+src/Modele/StrategieMort.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieMort.cpp.s
+.PHONY : src/Modele/StrategieMort.cpp.s
+
+src/Modele/StrategieNeutre.o: src/Modele/StrategieNeutre.cpp.o
+
+.PHONY : src/Modele/StrategieNeutre.o
+
+# target to build an object file
+src/Modele/StrategieNeutre.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieNeutre.cpp.o
+.PHONY : src/Modele/StrategieNeutre.cpp.o
+
+src/Modele/StrategieNeutre.i: src/Modele/StrategieNeutre.cpp.i
+
+.PHONY : src/Modele/StrategieNeutre.i
+
+# target to preprocess a source file
+src/Modele/StrategieNeutre.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieNeutre.cpp.i
+.PHONY : src/Modele/StrategieNeutre.cpp.i
+
+src/Modele/StrategieNeutre.s: src/Modele/StrategieNeutre.cpp.s
+
+.PHONY : src/Modele/StrategieNeutre.s
+
+# target to generate assembly for a file
+src/Modele/StrategieNeutre.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieNeutre.cpp.s
+.PHONY : src/Modele/StrategieNeutre.cpp.s
+
+src/Modele/StrategieNutritive.o: src/Modele/StrategieNutritive.cpp.o
+
+.PHONY : src/Modele/StrategieNutritive.o
+
+# target to build an object file
+src/Modele/StrategieNutritive.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieNutritive.cpp.o
+.PHONY : src/Modele/StrategieNutritive.cpp.o
+
+src/Modele/StrategieNutritive.i: src/Modele/StrategieNutritive.cpp.i
+
+.PHONY : src/Modele/StrategieNutritive.i
+
+# target to preprocess a source file
+src/Modele/StrategieNutritive.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieNutritive.cpp.i
+.PHONY : src/Modele/StrategieNutritive.cpp.i
+
+src/Modele/StrategieNutritive.s: src/Modele/StrategieNutritive.cpp.s
+
+.PHONY : src/Modele/StrategieNutritive.s
+
+# target to generate assembly for a file
+src/Modele/StrategieNutritive.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieNutritive.cpp.s
+.PHONY : src/Modele/StrategieNutritive.cpp.s
+
+src/Modele/StrategieVeneneuse.o: src/Modele/StrategieVeneneuse.cpp.o
+
+.PHONY : src/Modele/StrategieVeneneuse.o
+
+# target to build an object file
+src/Modele/StrategieVeneneuse.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieVeneneuse.cpp.o
+.PHONY : src/Modele/StrategieVeneneuse.cpp.o
+
+src/Modele/StrategieVeneneuse.i: src/Modele/StrategieVeneneuse.cpp.i
+
+.PHONY : src/Modele/StrategieVeneneuse.i
+
+# target to preprocess a source file
+src/Modele/StrategieVeneneuse.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieVeneneuse.cpp.i
+.PHONY : src/Modele/StrategieVeneneuse.cpp.i
+
+src/Modele/StrategieVeneneuse.s: src/Modele/StrategieVeneneuse.cpp.s
+
+.PHONY : src/Modele/StrategieVeneneuse.s
+
+# target to generate assembly for a file
+src/Modele/StrategieVeneneuse.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Modele/StrategieVeneneuse.cpp.s
+.PHONY : src/Modele/StrategieVeneneuse.cpp.s
+
+src/Presentateur/Presentateur.o: src/Presentateur/Presentateur.cpp.o
+
+.PHONY : src/Presentateur/Presentateur.o
+
+# target to build an object file
+src/Presentateur/Presentateur.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Presentateur/Presentateur.cpp.o
+.PHONY : src/Presentateur/Presentateur.cpp.o
+
+src/Presentateur/Presentateur.i: src/Presentateur/Presentateur.cpp.i
+
+.PHONY : src/Presentateur/Presentateur.i
+
+# target to preprocess a source file
+src/Presentateur/Presentateur.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Presentateur/Presentateur.cpp.i
+.PHONY : src/Presentateur/Presentateur.cpp.i
+
+src/Presentateur/Presentateur.s: src/Presentateur/Presentateur.cpp.s
+
+.PHONY : src/Presentateur/Presentateur.s
+
+# target to generate assembly for a file
+src/Presentateur/Presentateur.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Presentateur/Presentateur.cpp.s
+.PHONY : src/Presentateur/Presentateur.cpp.s
+
+src/Vue/CelluleGraphique.o: src/Vue/CelluleGraphique.cpp.o
+
+.PHONY : src/Vue/CelluleGraphique.o
+
+# target to build an object file
+src/Vue/CelluleGraphique.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/CelluleGraphique.cpp.o
+.PHONY : src/Vue/CelluleGraphique.cpp.o
+
+src/Vue/CelluleGraphique.i: src/Vue/CelluleGraphique.cpp.i
+
+.PHONY : src/Vue/CelluleGraphique.i
+
+# target to preprocess a source file
+src/Vue/CelluleGraphique.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/CelluleGraphique.cpp.i
+.PHONY : src/Vue/CelluleGraphique.cpp.i
+
+src/Vue/CelluleGraphique.s: src/Vue/CelluleGraphique.cpp.s
+
+.PHONY : src/Vue/CelluleGraphique.s
+
+# target to generate assembly for a file
+src/Vue/CelluleGraphique.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/CelluleGraphique.cpp.s
+.PHONY : src/Vue/CelluleGraphique.cpp.s
+
+src/Vue/Chronometre.o: src/Vue/Chronometre.cpp.o
+
+.PHONY : src/Vue/Chronometre.o
+
+# target to build an object file
+src/Vue/Chronometre.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/Chronometre.cpp.o
+.PHONY : src/Vue/Chronometre.cpp.o
+
+src/Vue/Chronometre.i: src/Vue/Chronometre.cpp.i
+
+.PHONY : src/Vue/Chronometre.i
+
+# target to preprocess a source file
+src/Vue/Chronometre.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/Chronometre.cpp.i
+.PHONY : src/Vue/Chronometre.cpp.i
+
+src/Vue/Chronometre.s: src/Vue/Chronometre.cpp.s
+
+.PHONY : src/Vue/Chronometre.s
+
+# target to generate assembly for a file
+src/Vue/Chronometre.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/Chronometre.cpp.s
+.PHONY : src/Vue/Chronometre.cpp.s
+
+src/Vue/Dimension.o: src/Vue/Dimension.cpp.o
+
+.PHONY : src/Vue/Dimension.o
+
+# target to build an object file
+src/Vue/Dimension.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/Dimension.cpp.o
+.PHONY : src/Vue/Dimension.cpp.o
+
+src/Vue/Dimension.i: src/Vue/Dimension.cpp.i
+
+.PHONY : src/Vue/Dimension.i
+
+# target to preprocess a source file
+src/Vue/Dimension.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/Dimension.cpp.i
+.PHONY : src/Vue/Dimension.cpp.i
+
+src/Vue/Dimension.s: src/Vue/Dimension.cpp.s
+
+.PHONY : src/Vue/Dimension.s
+
+# target to generate assembly for a file
+src/Vue/Dimension.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/Dimension.cpp.s
+.PHONY : src/Vue/Dimension.cpp.s
+
+src/Vue/GrenouilleGraphique.o: src/Vue/GrenouilleGraphique.cpp.o
+
+.PHONY : src/Vue/GrenouilleGraphique.o
+
+# target to build an object file
+src/Vue/GrenouilleGraphique.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/GrenouilleGraphique.cpp.o
+.PHONY : src/Vue/GrenouilleGraphique.cpp.o
+
+src/Vue/GrenouilleGraphique.i: src/Vue/GrenouilleGraphique.cpp.i
+
+.PHONY : src/Vue/GrenouilleGraphique.i
+
+# target to preprocess a source file
+src/Vue/GrenouilleGraphique.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/GrenouilleGraphique.cpp.i
+.PHONY : src/Vue/GrenouilleGraphique.cpp.i
+
+src/Vue/GrenouilleGraphique.s: src/Vue/GrenouilleGraphique.cpp.s
+
+.PHONY : src/Vue/GrenouilleGraphique.s
+
+# target to generate assembly for a file
+src/Vue/GrenouilleGraphique.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/GrenouilleGraphique.cpp.s
+.PHONY : src/Vue/GrenouilleGraphique.cpp.s
+
+src/Vue/PointDeVie.o: src/Vue/PointDeVie.cpp.o
+
+.PHONY : src/Vue/PointDeVie.o
+
+# target to build an object file
+src/Vue/PointDeVie.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/PointDeVie.cpp.o
+.PHONY : src/Vue/PointDeVie.cpp.o
+
+src/Vue/PointDeVie.i: src/Vue/PointDeVie.cpp.i
+
+.PHONY : src/Vue/PointDeVie.i
+
+# target to preprocess a source file
+src/Vue/PointDeVie.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/PointDeVie.cpp.i
+.PHONY : src/Vue/PointDeVie.cpp.i
+
+src/Vue/PointDeVie.s: src/Vue/PointDeVie.cpp.s
+
+.PHONY : src/Vue/PointDeVie.s
+
+# target to generate assembly for a file
+src/Vue/PointDeVie.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/PointDeVie.cpp.s
+.PHONY : src/Vue/PointDeVie.cpp.s
+
+src/Vue/VueGrenouille.o: src/Vue/VueGrenouille.cpp.o
+
+.PHONY : src/Vue/VueGrenouille.o
+
+# target to build an object file
+src/Vue/VueGrenouille.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/VueGrenouille.cpp.o
+.PHONY : src/Vue/VueGrenouille.cpp.o
+
+src/Vue/VueGrenouille.i: src/Vue/VueGrenouille.cpp.i
+
+.PHONY : src/Vue/VueGrenouille.i
+
+# target to preprocess a source file
+src/Vue/VueGrenouille.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/VueGrenouille.cpp.i
+.PHONY : src/Vue/VueGrenouille.cpp.i
+
+src/Vue/VueGrenouille.s: src/Vue/VueGrenouille.cpp.s
+
+.PHONY : src/Vue/VueGrenouille.s
+
+# target to generate assembly for a file
+src/Vue/VueGrenouille.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/Vue/VueGrenouille.cpp.s
+.PHONY : src/Vue/VueGrenouille.cpp.s
+
+src/client/grenouilloland.o: src/client/grenouilloland.cpp.o
+
+.PHONY : src/client/grenouilloland.o
+
+# target to build an object file
+src/client/grenouilloland.cpp.o:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/client/grenouilloland.cpp.o
+.PHONY : src/client/grenouilloland.cpp.o
+
+src/client/grenouilloland.i: src/client/grenouilloland.cpp.i
+
+.PHONY : src/client/grenouilloland.i
+
+# target to preprocess a source file
+src/client/grenouilloland.cpp.i:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/client/grenouilloland.cpp.i
+.PHONY : src/client/grenouilloland.cpp.i
+
+src/client/grenouilloland.s: src/client/grenouilloland.cpp.s
+
+.PHONY : src/client/grenouilloland.s
+
+# target to generate assembly for a file
+src/client/grenouilloland.cpp.s:
+	$(MAKE) -f CMakeFiles/grenouilloland.dir/build.make CMakeFiles/grenouilloland.dir/src/client/grenouilloland.cpp.s
+.PHONY : src/client/grenouilloland.cpp.s
 
 # Help Target
 help:
@@ -456,42 +861,87 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... grenouilloland"
-	@echo "... src/Modele/Case.o"
-	@echo "... src/Modele/Case.i"
-	@echo "... src/Modele/Case.s"
-	@echo "... src/Modele/Coordonnee.o"
-	@echo "... src/Modele/Coordonnee.i"
-	@echo "... src/Modele/Coordonnee.s"
+	@echo "... src/Modele/Cellule.o"
+	@echo "... src/Modele/Cellule.i"
+	@echo "... src/Modele/Cellule.s"
 	@echo "... src/Modele/Eau.o"
 	@echo "... src/Modele/Eau.i"
 	@echo "... src/Modele/Eau.s"
+	@echo "... src/Modele/Element.o"
+	@echo "... src/Modele/Element.i"
+	@echo "... src/Modele/Element.s"
+	@echo "... src/Modele/ElementMortel.o"
+	@echo "... src/Modele/ElementMortel.i"
+	@echo "... src/Modele/ElementMortel.s"
+	@echo "... src/Modele/Etat.o"
+	@echo "... src/Modele/Etat.i"
+	@echo "... src/Modele/Etat.s"
 	@echo "... src/Modele/Grenouille.o"
 	@echo "... src/Modele/Grenouille.i"
 	@echo "... src/Modele/Grenouille.s"
 	@echo "... src/Modele/Jeu.o"
 	@echo "... src/Modele/Jeu.i"
 	@echo "... src/Modele/Jeu.s"
-	@echo "... src/Modele/SNenuphardDopant.o"
-	@echo "... src/Modele/SNenuphardDopant.i"
-	@echo "... src/Modele/SNenuphardDopant.s"
-	@echo "... src/Modele/SNenuphardImmortel.o"
-	@echo "... src/Modele/SNenuphardImmortel.i"
-	@echo "... src/Modele/SNenuphardImmortel.s"
-	@echo "... src/Modele/SNenuphardMortel.o"
-	@echo "... src/Modele/SNenuphardMortel.i"
-	@echo "... src/Modele/SNenuphardMortel.s"
-	@echo "... src/Modele/SNenuphardNormal.o"
-	@echo "... src/Modele/SNenuphardNormal.i"
-	@echo "... src/Modele/SNenuphardNormal.s"
-	@echo "... src/Modele/SNenuphardNutritif.o"
-	@echo "... src/Modele/SNenuphardNutritif.i"
-	@echo "... src/Modele/SNenuphardNutritif.s"
-	@echo "... src/Modele/SNenuphardVeneneux.o"
-	@echo "... src/Modele/SNenuphardVeneneux.i"
-	@echo "... src/Modele/SNenuphardVeneneux.s"
-	@echo "... src/Modele/grenouilloland.o"
-	@echo "... src/Modele/grenouilloland.i"
-	@echo "... src/Modele/grenouilloland.s"
+	@echo "... src/Modele/Nenuphar.o"
+	@echo "... src/Modele/Nenuphar.i"
+	@echo "... src/Modele/Nenuphar.s"
+	@echo "... src/Modele/NenupharDopant.o"
+	@echo "... src/Modele/NenupharDopant.i"
+	@echo "... src/Modele/NenupharDopant.s"
+	@echo "... src/Modele/NenupharImmortel.o"
+	@echo "... src/Modele/NenupharImmortel.i"
+	@echo "... src/Modele/NenupharImmortel.s"
+	@echo "... src/Modele/NenupharMortel.o"
+	@echo "... src/Modele/NenupharMortel.i"
+	@echo "... src/Modele/NenupharMortel.s"
+	@echo "... src/Modele/NenupharNutritif.o"
+	@echo "... src/Modele/NenupharNutritif.i"
+	@echo "... src/Modele/NenupharNutritif.s"
+	@echo "... src/Modele/NenupharVeneneux.o"
+	@echo "... src/Modele/NenupharVeneneux.i"
+	@echo "... src/Modele/NenupharVeneneux.s"
+	@echo "... src/Modele/StrategieAbstraite.o"
+	@echo "... src/Modele/StrategieAbstraite.i"
+	@echo "... src/Modele/StrategieAbstraite.s"
+	@echo "... src/Modele/StrategieDopante.o"
+	@echo "... src/Modele/StrategieDopante.i"
+	@echo "... src/Modele/StrategieDopante.s"
+	@echo "... src/Modele/StrategieMort.o"
+	@echo "... src/Modele/StrategieMort.i"
+	@echo "... src/Modele/StrategieMort.s"
+	@echo "... src/Modele/StrategieNeutre.o"
+	@echo "... src/Modele/StrategieNeutre.i"
+	@echo "... src/Modele/StrategieNeutre.s"
+	@echo "... src/Modele/StrategieNutritive.o"
+	@echo "... src/Modele/StrategieNutritive.i"
+	@echo "... src/Modele/StrategieNutritive.s"
+	@echo "... src/Modele/StrategieVeneneuse.o"
+	@echo "... src/Modele/StrategieVeneneuse.i"
+	@echo "... src/Modele/StrategieVeneneuse.s"
+	@echo "... src/Presentateur/Presentateur.o"
+	@echo "... src/Presentateur/Presentateur.i"
+	@echo "... src/Presentateur/Presentateur.s"
+	@echo "... src/Vue/CelluleGraphique.o"
+	@echo "... src/Vue/CelluleGraphique.i"
+	@echo "... src/Vue/CelluleGraphique.s"
+	@echo "... src/Vue/Chronometre.o"
+	@echo "... src/Vue/Chronometre.i"
+	@echo "... src/Vue/Chronometre.s"
+	@echo "... src/Vue/Dimension.o"
+	@echo "... src/Vue/Dimension.i"
+	@echo "... src/Vue/Dimension.s"
+	@echo "... src/Vue/GrenouilleGraphique.o"
+	@echo "... src/Vue/GrenouilleGraphique.i"
+	@echo "... src/Vue/GrenouilleGraphique.s"
+	@echo "... src/Vue/PointDeVie.o"
+	@echo "... src/Vue/PointDeVie.i"
+	@echo "... src/Vue/PointDeVie.s"
+	@echo "... src/Vue/VueGrenouille.o"
+	@echo "... src/Vue/VueGrenouille.i"
+	@echo "... src/Vue/VueGrenouille.s"
+	@echo "... src/client/grenouilloland.o"
+	@echo "... src/client/grenouilloland.i"
+	@echo "... src/client/grenouilloland.s"
 .PHONY : help
 
 

@@ -11,7 +11,7 @@ namespace grenouilloland {
 /**
 * Declarations incompletes necessaires.
 */
-class Vue;
+class VueGrenouille;
 
 /**
 * @class GrenouilleGraphique GrenouilleGraphique.hpp
@@ -28,7 +28,7 @@ public:
 /**
 * Declaration d'amitié.
 */
-friend class Vue;
+friend class VueGrenouille;
 
 /**
 * Declaration d'amitié.
@@ -50,7 +50,7 @@ public:
 * Accesseur.
 * @return la valeur de @ref ptrVue.
 */
-const Vue& lireVue() const;
+const VueGrenouille& lireVue() const;
 
 protected:
 
@@ -58,7 +58,7 @@ protected:
 * Accesseur.
 * @return la valeur de @ref ptrVue.
 */
-Vue& lireVueModifiable();
+VueGrenouille& lireVueModifiable();
 
 protected:
 
@@ -74,7 +74,7 @@ protected:
 /**
 * Unique vue proprietaire de cette generation.
 */
-Vue* const ptrVue;
+VueGrenouille* const ptrVue;
 
 /**
 * Gestionnaire de mise en forme de ce plateau.

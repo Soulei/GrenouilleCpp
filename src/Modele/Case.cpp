@@ -1,43 +1,61 @@
-#include "Case.hpp"
+/************************************
+ * Definition de la classe Case. *
+ ************************************/
 
-namespace grenouilloland{
-  /*Constructeur Case*/
-  Case::Case(const Coordonnee & c): pos_(c){
-  };
+#include "Jeu.hpp"
+using namespace grenouilloland;
 
-  /*RemplacerElt*/
-  void
-  Case::remplaceElt(const Element & e){
-    e_ = e;
-  };
+/************
+ * Case. *
+ ************/
 
-  /*Position*/
-  Coordonnee
-  Case::getPosition(){
-    return pos_;
-  };
+Case::Case(const int& colonne, const int& ligne):
+  _ligne(ligne),
+  _colonne(colonne),
+  _element(new Eau()) {
+}
 
-  const Element
-  Case::getElement(){
-    return e_;
-  };
+/**************
+ * lireLigne. *
+ **************/
 
-  void
-  Case::setElement(Element e){
-    e_ = e;
-  };
+const int& 
+Case::lireLigne() const {
+  return _ligne;
+}
 
-  void
-  Case::vieillirElt(){
-    e_.vieillir();
-  }
-  Couleur const
-  Case::couleurElt() const{
-    return e_.getCouleur();
-  }
-  /*Set position
-  void
-  Case::setPosition(Coordonnee & coord) const{
-    pos_ = &coord;
-  };*/
+/****************
+ * lireColonne. *
+ ****************/
+
+const int& 
+Case::lireColonne() const {
+  return _colonne;
+}
+
+/****************
+ * lireElement. *
+ ****************/
+
+const Element&
+Case::lireElement() const {
+	return *_element;
+}
+
+/****************
+ * changerElement. *
+ ****************/
+
+void
+Case::changerElement(Element* element) {
+	_element.reset(element);
+}
+
+/****************
+ * vieillirElement. *
+ ****************/
+
+Etat
+Case::vieillirElement() {
+	return Element::Mandataire::vieillir(*_element);
 }

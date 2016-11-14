@@ -1,137 +1,54 @@
-#include "Jeu.hpp"
+#include "include/Grenouille.hpp"
+using namespace grenouilloland;
 
-namespace grenouilloland{
-  /*Constructeur*/
-  Grenouille::Grenouille(Coordonnee & c): posCour_(c){
-    pointVie_ = 1;
-  }
+Grenouille::Grenouille(const unsigned int& x, const unsigned int& y) : _pv(1), _malade(false), _x(x), _y(y)
+{
+}
 
-  /*Deplacer la grenouille vers le case voisine nord*/
-  void
-  Grenouille::deplacerNord(){
-    int y = posCour_.getY();
-    posCour_.setY(y-1);
-  };
+const unsigned int& Grenouille::getPv() const
+{
+	return _pv;
+}
 
-  /*Deplacer la grenouille vers le case voisine sud*/
-  void
-  Grenouille::deplacerSud(){
-    int y = posCour_.getY();
-    posCour_.setY(y+1);
-  };
+unsigned int Grenouille::setPv(const unsigned int& pv)
+{
+	return _pv = pv;
+}
 
-  /*Deplacer la grenouille vers le case voisine est*/
-  void
-  Grenouille::deplacerEst(){
-    int x = posCour_.getX();
-    posCour_.setX(x+1);
-  };
+const bool& Grenouille::getMalade() const
+{
+	return _malade;
+}
 
-  /*Deplacer la grenouille vers le case voisine ouest*/
-  void
-  Grenouille::deplacerOuest(){
-    int x = posCour_.getX();
-    posCour_.setX(x-1);
-  };
+bool Grenouille::setMalade(const bool& malade)
+{
+	return _malade = malade;
+} 
 
-  void
-  Grenouille::reduirePtvie(const Element & e){
-    Couleur t = e.getCouleur();
-    switch (t) {
-      case Rose:
-        pointVie_++;
-        guerir();
-        break;
-      case RougeDopant:
-        pointVie_ = pointVie_*2;
-        if(malade_){
-          guerir();
-        }
-        break;
-      case RougeMortel:
-        pointVie_ = 0;
-        break;
-      case Jaune:
-        if(!malade_){
-          rendreMalade();
-          pointVie_ = pointVie_/2;
-        }
-        else{
-          pointVie_ = 0;
-        }
-        break;
-        /*Eau, Nenuphard immortel et normal aucun effet sur la grenouille*/
-    }
-  };
+const unsigned int& Grenouille::getX() const
+{
+	return _x;
+}
 
-  int
-  Grenouille::getVie(){
-    return pointVie_;
-  };
+unsigned int Grenouille::setX(const unsigned int& x)
+{
+	return _x = x;
+}
 
-  void
-  Grenouille::rendreMalade(){
-    if(malade_){
-      pointVie_ = 0;
-    }
-    else
-      malade_ = true;
-  };
+const unsigned int& Grenouille::getY() const
+{
+	return _y;
+}
 
-  void
-  Grenouille::guerir(){
-    malade_ = false;
-  };
+unsigned int Grenouille::setY(const unsigned int& y)
+{
+	return _y = y;
+}
 
-  bool
-  Grenouille::estVivante(){
-    return pointVie_ == 0?false:true;
-  };
-
-  Coordonnee &
-  Grenouille::getPosCour(){
-    return posCour_;
-  }
-
-  bool
-  Grenouille::cheminExiste(Jeu & jeu) const{
-    int dim = jeu.lireDimension();
-    int x = posCour_.getX();
-    int y = posCour_.getY();
-    if(x == 0 && y == 0){
-      if((jeu.lireGrille())[(x+1)*dim+y].couleurElt() == None){
-        if((jeu.lireGrille())[x*dim+y+1].couleurElt() == None)
-          return true;
-      }
-    }
-    if(x >0 && y == 0 && x < jeu.lireDimension()){
-      if((jeu.lireGrille())[(x+1)*dim+y].couleurElt() == None){
-        if((jeu.lireGrille())[(x+1)*dim+y].couleurElt() == None){
-          if((jeu.lireGrille())[(x-1)*dim+y].couleurElt() == None)
-            return true;
-        }
-      }
-    }
-    if(x ==0 && y > 0 && y < jeu.lireDimension()){
-      if((jeu.lireGrille())[x*dim+y+1].couleurElt() == None){
-        if((jeu.lireGrille())[(x+1)*dim+y].couleurElt() == None){
-          if((jeu.lireGrille())[x*dim+y-1].couleurElt() == None)
-            return true;
-        }
-      }
-    }
-
-    if(x > 0 && y > 0 || x < jeu.lireDimension() && y < jeu.lireDimension()){
-      if((jeu.lireGrille())[x*dim+y+1].couleurElt() == None){
-        if((jeu.lireGrille())[(x+1)*dim+y].couleurElt() == None){
-          if((jeu.lireGrille())[x*dim+y-1].couleurElt() == None){
-            if((jeu.lireGrille())[(x-1)*dim+y].couleurElt() == None){
-              return true;
-            }
-          }
-        }
-      }
-    }
-    return false;
-  }
+void
+Grenouille::reinitialiser(const int& n) {
+	_pv = 1;
+	_malade = false;
+	_x = 0;
+	_y = n;
 }

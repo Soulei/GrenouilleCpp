@@ -1,226 +1,203 @@
 #include "Jeu.hpp"
-#include "SNenuphardDopant.hpp"
-#include "SNenuphardImmortel.hpp"
-#include "SNenuphardMortel.hpp"
-#include "SNenuphardNormal.hpp"
-#include "SNenuphardNutritif.hpp"
-#include "SNenuphardVeneneux.hpp"
-#include "Eau.hpp"
-#include <cstdlib>
 #include <iostream>
-#include <ctime>
-#include <chrono>
-#include <vector>
+using namespace grenouilloland;
 
+Jeu::Jeu(const int& n) : _grenouille(Grenouille(0,n-1)), _n(n), _end(true), _compteur(60)
+{
+	if (n == 0)
+	{
+		throw;
+	}
+	else
+	{
+		srand(time(NULL));
 
+		for (int i=0; i<(n*n); i++)
+		{
+			_plateau.push_back(Case(i%n,i/n));
+		}
+		_plateau[n-1].changerElement(new NenupharImmortel());
+		_plateau[(n-1)*n].changerElement(new NenupharImmortel());
+	}
+}
 
-namespace grenouilloland{
-  /*Constante Nenuphard*/
-  const int N = 6;
-  const int xstart = 0;
-  const int ystart = 0;
+void
+Jeu::reinitialiser()
+{
+	_end = true;
 
-  /*Constructeur*/
-  Jeu::Jeu(const int & dimension, const Grenouille & grenouille) : dimension_(dimension), grenouille_(grenouille){
-    for (int i = 0; i < dimension; i ++) {
-      for (int j = 0; j < dimension; j ++) {
-        grille_.push_back(Case(Coordonnee(i, j)));
-      }
-    }
-  }
+	for (int i=0; i <(_n*_n); i++)
+	{
+		_plateau[i].changerElement(new Eau());
+	}
+	
+	_plateau[_n-1].changerElement(new NenupharImmortel());
+	_plateau[(_n-1)*_n].changerElement(new NenupharImmortel());
+}
 
-  void
-  Jeu::initialiser(){
-    std::srand(std::time(0)); // use current time as seed for random generator
-    int random_variable = 0;
-    for(int i = 0; i< dimension_; i++){
-      for(int j = 0; j< dimension_; j++){
-        if((i == 0 && j == dimension_-1) || (i == dimension_-1 && j == 0)){
-          grille_[i * dimension_ + j].setElement(SNenuphardImmortel());
-        }
-        random_variable = (std::rand()%N)+1;
-        switch (random_variable) {
-          case Rose:
-            grille_[i * dimension_ + j].setElement(SNenuphardNutritif());
-            break;
-          case RougeDopant:
-            grille_[i * dimension_ + j].setElement(SNenuphardDopant());
-            break;
-          case RougeMortel:
-            grille_[i * dimension_ + j].setElement(SNenuphardMortel());
-            break;
-          case Jaune:
-            grille_[i * dimension_ + j].setElement(SNenuphardVeneneux());
-            break;
-            /*Eau, Nenuphard immortel et normal aucun effet sur la grenouille*/
-          case None:
-            grille_[i * dimension_ + j].setElement(Eau());
-            break;
-          case Vert:
-              grille_[i * dimension_ + j].setElement(SNenuphardNormal());
-            break;
-        }
-      }
-    }
-  };
+void Jeu::lancerPartie()
+{
+		_compteur = 60;
+		_end = false;
+		Grenouille::DeleguationPosition::reinitialiser(_grenouille, _n-1);
+}
 
-  /*Lancer le jeu*/
-  void
-  Jeu::lancerJeu(){
-    /*Set la position de la grenouille*/
-    int nextPos;
-    std::chrono::time_point<std::chrono::system_clock> start;
-    start = std::chrono::system_clock::now(); /* start timer */
-    while(true){
-      int secondsElapsed = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now()-start).count();
-      if(secondsElapsed >= 1){ /* 20 seconds elapsed -> faire vieillir les nenuphards */
-        for(int i = 0; i<dimension_;i++){
-          for(int j = 0; j<dimension_;j++){
-            grille_[i * dimension_ + j].vieillirElt();
-          }
-        }
-      }
-      std::cout << "Directions : " << std::endl;
-      std::cout << "<8> : nord" << std::endl;
-      std::cout << "<2> : sud" << std::endl;
-      std::cout << "<6> : est" << std::endl;
-      std::cout << "<4> : ouest" << std::endl;
-      std::cout << "Entrez la direction : " << std::endl;
-      std::cin >> nextPos;
-      while(nextPos != 8 && nextPos != 2 && nextPos != 6 && nextPos != 4){
-        std::cout << "Entrez la direction : " << std::endl;
-        std::cin >> nextPos;
-      }
-      if(grenouille_.cheminExiste(*this)){
-        switch (nextPos) {
-          case 8:grenouille_.deplacerNord();break;
-          case 2:grenouille_.deplacerSud();break;
-          case 6:grenouille_.deplacerEst();break;
-          case 4:grenouille_.deplacerOuest();break;
-        }
-        grenouille_.reduirePtvie((grille_[grenouille_.getPosCour().getX() * dimension_ + grenouille_.getPosCour().getY()]).getElement());
-        if(!grenouille_.estVivante()){
-          break;
-        }
-      }
-      else{
-        construireChemin();
-      }
+void Jeu::creerChemin()
+{
+	if (!_end)
+	{
+		int x = _grenouille.getX();
+		int y = _grenouille.getY();
 
+		for (int i = x; i < _n; i++)
+		{			
+			if (_plateau[y*_n+i].lireElement().isEau()) 
+			{
+				_plateau[y*_n+i].changerElement(nenupharAleatoire());
+			}
+			if (y != 0)
+			{
+				if (_plateau[i].lireElement().isEau())
+				{
+					_plateau[i].changerElement(nenupharAleatoire());
+				}
+			}
+		}
 
-    }
-  }
+		for (int j = y; j > 0; j--)
+		{
+			if (_plateau[j*_n+x].lireElement().isEau())
+			{
+				_plateau[j*_n+x].changerElement(nenupharAleatoire());
+			}
+			if (x != _n-1)
+			{
+				if (_plateau[(_n-1)+_n*j].lireElement().isEau())
+				{
+					_plateau[(_n-1)+_n*j].changerElement(nenupharAleatoire());
+				}
+			}
+		}
+	}
+}
 
-  /*Construire un nouveau chemin pour la grenouille quand les nenuphards
-  des cases voisines sont morts*/
-  void
-  Jeu::construireChemin(){
-    /*1er cas : construire un chemin sur une ligne entre pos de la grenouille et le Nenuphard immortel*/
-    if(grenouille_.getPosCour().getX() == xstart){
-      for(int j = grenouille_.getPosCour().getY()+1; j < dimension_; j++){
-        int random_variable = (std::rand()%N)+1;
-        switch (random_variable) {
-          case Rose:
-            grille_[xstart * dimension_ + j].remplaceElt(SNenuphardNutritif());
-            break;
-          case RougeDopant:
-            grille_[xstart * dimension_ + j].remplaceElt(SNenuphardDopant());
-            break;
-          case RougeMortel:
-            grille_[xstart * dimension_ + j].remplaceElt(SNenuphardMortel());
-            break;
-          case Jaune:
-            grille_[xstart * dimension_ + j].remplaceElt(SNenuphardVeneneux());
-            break;
-          default:
-            grille_[xstart * dimension_ + j].remplaceElt(SNenuphardNormal());
-            break;
-        }
-      }
-    }
-    /*2eme cas : construire un chemin sur une colonne entre pos de la grenouille et le Nenuphard immortel*/
-    if(grenouille_.getPosCour().getY() == dimension_){
-      for(int j = grenouille_.getPosCour().getX()+1; j < dimension_; j++){
-        int random_variable = (std::rand()%N)+1;
-        switch (random_variable) {
-          case Rose:
-            grille_[dimension_ * dimension_ + j].remplaceElt(SNenuphardNutritif());
-            break;
-          case RougeDopant:
-            grille_[dimension_ * dimension_ + j].remplaceElt(SNenuphardDopant());
-            break;
-          case RougeMortel:
-            grille_[dimension_ * dimension_ + j].remplaceElt(SNenuphardMortel());
-            break;
-          case Jaune:
-            grille_[dimension_ * dimension_ + j].remplaceElt(SNenuphardVeneneux());
-            break;
-          default:
-            grille_[dimension_ * dimension_ + j].remplaceElt(SNenuphardNormal());
-            break;
-        }
-      }
-    }
-    /*3eme cas: Construire un chemin en rectangle entre la grenouille et le Nenuphard immortel*/
-    else{
-        int x = grenouille_.getPosCour().getX();
-        int y = grenouille_.getPosCour().getY();
-        for(int j = grenouille_.getPosCour().getX()-1; j >= xstart; j--){
-          int random_variable = (std::rand()%N)+1;
-          switch (random_variable) {
-            case Rose:
-              grille_[j * dimension_ + y].remplaceElt(SNenuphardNutritif());
-              grille_[j * dimension_ + (dimension_-1)].remplaceElt(SNenuphardNutritif());
-              break;
-            case RougeDopant:
-              grille_[j * dimension_ + y].remplaceElt(SNenuphardDopant());
-              grille_[j * dimension_ + (dimension_-1)].remplaceElt(SNenuphardNutritif());
-              break;
-            case RougeMortel:
-              grille_[j * dimension_ + y].remplaceElt(SNenuphardMortel());
-              grille_[j * dimension_ + (dimension_-1)].remplaceElt(SNenuphardNutritif());
-              break;
-            case Jaune:
-              grille_[j * dimension_ + y].remplaceElt(SNenuphardVeneneux());
-              grille_[j * dimension_ + (dimension_-1)].remplaceElt(SNenuphardNutritif());
-              break;
-            default:
-              grille_[j * dimension_ + y].remplaceElt(SNenuphardNormal());
-              grille_[j * dimension_ + (dimension_-1)].remplaceElt(SNenuphardNutritif());
-              break;
-          }
-        }
-        for(int i = grenouille_.getPosCour().getY()+1; i < dimension_; i++){
-          int random_variable = (std::rand()%N)+1;
-          switch (random_variable) {
-            case Rose:
-              grille_[x * dimension_ + i].remplaceElt(SNenuphardNutritif());
-              grille_[xstart * dimension_ + i].remplaceElt(SNenuphardNutritif());
-              break;
-            case RougeDopant:
-              grille_[x * dimension_ + i].remplaceElt(SNenuphardDopant());
-              grille_[xstart * dimension_ + i].remplaceElt(SNenuphardNutritif());
-              break;
-            case RougeMortel:
-              grille_[x * dimension_ + i].remplaceElt(SNenuphardMortel());
-              grille_[xstart * dimension_ + i].remplaceElt(SNenuphardNutritif());
-              break;
-            case Jaune:
-              grille_[x * dimension_ + i].remplaceElt(SNenuphardVeneneux());
-              grille_[xstart * dimension_ + i].remplaceElt(SNenuphardNutritif());
-              break;
-            default:
-              grille_[x * dimension_ + i].remplaceElt(SNenuphardNormal());
-              grille_[xstart * dimension_ + i].remplaceElt(SNenuphardNutritif());
-              break;
-          }
-        }
-      }
-  }
+bool Jeu::verifEtat()
+{
+	return _end = (_grenouille.getPv()==0) ? true : false;
+}
 
-  const std::vector< Case > &
-  Jeu::lireGrille(){
-    return grille_;
-  }
+bool Jeu::vieillissement()
+{
+	if (!_end)
+	{
+		_compteur--;
+		
+		if (_compteur > 0 && (_grenouille.getX() != (_n-1) || _grenouille.getY() != 0))
+		{
+			bool morte = false;
+			for (int i = 0; i < (_n*_n); i++) _plateau[i].vieillirElement();
+			
+			creerChemin();
+			
+			for (int i = 0; i < (_n*_n); i++)
+			{		
+				if (_plateau[i].lireElement().lireEtat() == Etat::Mort)
+				{
+					_plateau[i].changerElement(new Eau());
+					
+					if ((_grenouille.getX() + (_grenouille.getY() * _n)) == i)
+					{
+						Element::Deleguation::appliquerStrategie(_plateau[i].lireElement(),_grenouille);
+						if (verifEtat()) {
+							morte = true;
+						}
+					}					
+				}
+			}
+			if(morte)
+				return false;
+			return true;
+		}
+		else
+		{
+			_end = true;
+			return false;
+		}
+	}
+	
+	return false;
+}
 
+bool Jeu::deplacerGrenouille(const int& x, const int& y)
+{
+	if (!_end)
+	{
+		int r_x = static_cast<int>(_grenouille.getX()) - x;
+		int r_y = static_cast<int>(_grenouille.getY()) - y;
+	
+		if (((r_x * r_x) == 1 && r_y == 0) || ((r_y * r_y) == 1 && r_x == 0))
+		{
+			Grenouille::DeleguationPosition::setX(_grenouille,x);
+			Grenouille::DeleguationPosition::setY(_grenouille,y);
+
+			Element::Deleguation::appliquerStrategie(_plateau[x+(_n*y)].lireElement(),_grenouille);
+			verifEtat();
+
+			return true;
+		}
+	}
+	return false;
+}
+
+const int&
+Jeu::lireDimension() const {
+	return _n;
+}
+
+const unsigned int&
+Jeu::lireCompteur() const {
+	return _compteur;
+}
+
+const Case& 
+Jeu::lireCase(const int& ligne, const int& colonne) const {
+  	return _plateau[ligne * _n + colonne];
+}
+
+const unsigned int&
+Jeu::lirePvGrenouille() const {
+	return _grenouille.getPv();
+}
+
+bool
+Jeu::grenouilleMalade() const {
+	return _grenouille.getMalade();
+}
+
+bool
+Jeu::presenceGrenouille(const unsigned int& ligne, const unsigned int& colonne) const {
+	return (ligne == _grenouille.getY() && colonne == _grenouille.getX());
+}
+
+bool
+Jeu::end() const {
+	return _end;
+}
+
+Element*
+Jeu::nenupharAleatoire() const
+{
+	switch (rand()%5)
+	{
+		case 1 :
+			return new NenupharDopant();
+		case 2 :
+			return new NenupharMortel();
+		case 3 :
+			return new NenupharNutritif();
+		case 4 :
+			return new NenupharVeneneux();
+		default :
+			return new Nenuphar();
+	}
 }

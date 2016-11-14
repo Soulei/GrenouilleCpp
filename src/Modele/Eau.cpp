@@ -1,20 +1,22 @@
-#include "Eau.hpp"
+#include "include/Eau.hpp"
+using namespace grenouilloland;
 
-namespace grenouilloland{
-  /*Constructeur*/
-  Eau::Eau(){
-    type_(None);
-  }
-  /*Vieillir mais pas utilisé ici*/
-  Eau::vieillir(){
-  }
-
-  Couleur
-  Eau::getCouleur(){
-    return this.type_;
-  };
-
-  /*getVie*/
-  Eau::getvie(){
-  };
+Eau::Eau() : Element(GestStrat<StrategieMort>::strategie)
+{
 }
+
+Eau::~Eau()
+{
+}
+
+bool Eau::isEau() const
+{
+	return true;
+}
+
+const int&
+Eau::lireId() const {
+	return _ID;
+}
+
+const int Eau::_ID(0);

@@ -77,6 +77,8 @@ SNenuphardVeneneux.hpp
 /home/chou/Documents/M1/ProgrammationParralleleC++/Devoir/src/Modele/grenouilloland.cpp
 Jeu.hpp
 /home/chou/Documents/M1/ProgrammationParralleleC++/Devoir/src/Modele/Jeu.hpp
+Coordonnee.hpp
+/home/chou/Documents/M1/ProgrammationParralleleC++/Devoir/src/Modele/Coordonnee.hpp
 iostream
 -
 map

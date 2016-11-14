@@ -44,11 +44,9 @@ PointDeVie::mettreAJour(const Presentateur& presentateur) {
 
 	// Mise à jour de l'image du coeur.
 	if(presentateur.lireModele().grenouilleMalade())
-<<<<<<< HEAD
+	
 		imageCoeur.set(Vue::cheminImages + "coeurEmpoisonne-96x96.png");
-=======
-		_imageCoeur.set(Vue::cheminImages + "coeur_malade-96x96.png");
->>>>>>> 74c69b74dbe8db3c69174fdb0ec4461261771d8e
+
 	else
 		_imageCoeur.set(Vue::cheminImages + "coeur-96x96.png");
 }

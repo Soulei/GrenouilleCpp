@@ -37,3 +37,4 @@ Chronometre::mettreAJour(const Presentateur& presentateur) {
 	// Affichage du temps dans la barre de progression.
 	_barreDeProgression.set_text(conversion.str() + " Sec.");
 	_barreDeProgression.set_show_text(true);
+}
